@@ -1,77 +1,76 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 //sama ControlLeft scriptiga
 
 public class ControlRight : MonoBehaviour
 {
     public GameObject right;
-    public float Speed = 50f;
+    public float speed = 50f;
     public float border = 5.2f;
-    public float midborder = 0.6f;
+    public float midBorder = 0.6f;
     public float odd = 1.2f;
-    public Vector3 startpos;
-    private bool leftIsPressed = false;
-    private bool rightIsPressed = false;
+    public Vector3 startPos;
+    private bool _leftIsPressed;
+    private bool _rightIsPressed;
 
     public void OnLeftButtonDown()
     {
-        leftIsPressed = true;
+        _leftIsPressed = true;
     }
     public void OnLeftButtonUp()
     {
-        leftIsPressed = false;
+        _leftIsPressed = false;
     }
     public void OnRightButtonDown()
     {
-        rightIsPressed = true;
+        _rightIsPressed = true;
     }
     public void OnRightButtonUp()
     {
-        rightIsPressed = false;
+        _rightIsPressed = false;
     }
 
 
     public void Start()
     {
-        startpos = right.transform.position;
+        startPos = right.transform.position;
     }
 
     public void Update()
     {
-        if (rightIsPressed)
+        if (_rightIsPressed)
         {
-            right.transform.Translate(Speed*Time.deltaTime, 0, 0);
+            right.transform.Translate(speed*Time.deltaTime, 0, 0);
             if (right.transform.position.x > border)
             {
                 transform.position = new Vector3(border, transform.position.y, transform.position.z);
             }
         }
-        else if (right.transform.position.x > midborder)
+        else if (right.transform.position.x > midBorder)
         {
-            right.transform.position = Vector3.MoveTowards(right.transform.position, startpos, Speed * Time.deltaTime);
+            right.transform.position = Vector3.MoveTowards(right.transform.position, startPos, speed * Time.deltaTime);
         }
 
-        if (leftIsPressed)
+        if (_leftIsPressed)
         {
-            right.transform.Translate(-Speed * Time.deltaTime, 0, 0);
+            right.transform.Translate(-speed * Time.deltaTime, 0, 0);
             if (right.transform.position.x < -border + odd)
             {
                 transform.position = new Vector3(-border + odd, transform.position.y, transform.position.z);
             }
-            if (rightIsPressed)
+            if (_rightIsPressed)
             {
-                right.transform.Translate(Speed * Time.deltaTime, 0, 0);
+                right.transform.Translate(speed * Time.deltaTime, 0, 0);
                 if (right.transform.position.x > border)
                 {
                     transform.position = new Vector3(border, transform.position.y, transform.position.z);
                 }
             }
         }
-        else if (right.transform.position.x < midborder)
+        else if (right.transform.position.x < midBorder)
         {
-            right.transform.position = Vector3.MoveTowards(right.transform.position, startpos, Speed * Time.deltaTime);
+            right.transform.position = Vector3.MoveTowards(right.transform.position, startPos, speed * Time.deltaTime);
         }
     }
 }

@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Obstacles : MonoBehaviour
@@ -22,23 +19,23 @@ public class Obstacles : MonoBehaviour
     public Rigidbody twoCube;
     public Rigidbody bigMiddleCube;
 
-    SpawnCountAdd spawnCount;
-    ScoreAdd scoreRead;
-    Loss leftFreeze;
-    Loss rightFreeze;
-    ControlLeft buttonIsPressed;
+    private SpawnCountAdd _spawnCount;
+    private ScoreAdd _scoreRead;
+    private Loss _leftFreeze;
+    private Loss _rightFreeze;
+    private ControlLeft _buttonIsPressed;
 
-    private int rndm;
+    private int _rand;
     public int difficulty;
 
-    private float Timer;
-    private float speed;
-    private float addTime;
-    private float offset = 6.6f;
-    private float pauseTimer;
-    private float pause = 2.5f;
+    private float _timer;
+    private float _speed;
+    private float _addTime;
+    private float _offset = 6.6f;
+    private float _pauseTimer;
+    private float _pause = 2.5f;
 
-    private bool stop = false;
+    private bool _stop;
 
     public float addSpeed;
     public float timeAdd;
@@ -61,15 +58,15 @@ public class Obstacles : MonoBehaviour
     private float pauseHard = 2.5f;
 
     //Tutorial
-    private bool tutorialchosen = false;
+    private bool _isTutorial = false;
     public GameObject tutorialRightText;
     public GameObject tutorialLeftText;
     public GameObject tutorialSplitText;
     public GameObject tutorialLostPanel;
     public GameObject tutorialLostPanelEasy;
-    private float holdTimer;
-    private float delay = 2f;
-    private float delayTwo = 3.5f;
+    private float _holdTimer;
+    private float _delay = 2f;
+    private float _delayTwo = 3.5f;
 
 
 
@@ -78,57 +75,57 @@ public class Obstacles : MonoBehaviour
     public void SpawnCubeMid()                  //kui tuleb märguanne et see vastane on valitud siis...
     {
         Rigidbody clone = Instantiate(Cube, transform.position, Cube.transform.rotation) as Rigidbody;  //loob kuubiku
-        clone.velocity = transform.up * speed;                                                          //annab kiiruse kuubikule
-        Timer = Time.time + addTime;                                                                    //alustab uuesti lugemise millal uus vastane märguande saab
-        rndm = 10;                                                                                      //ei lase kohe uut vastast valida vaid peab ootama timeri lõppu
+        clone.velocity = transform.up * _speed;                                                          //annab kiiruse kuubikule
+        _timer = Time.time + _addTime;                                                                    //alustab uuesti lugemise millal uus vastane märguande saab
+        _rand = 10;                                                                                      //ei lase kohe uut vastast valida vaid peab ootama timeri lõppu
     }                                                                                                   //kõik alumised, mille nimi algab "Spawn" on täpselt samad aga erineva kuubiga
 
     public void SpawnBigCubeMid()
     {
         Rigidbody clone = Instantiate(bigMiddleCube, transform.position, Cube.transform.rotation) as Rigidbody;
-        clone.velocity = transform.up * speed;
-        Timer = Time.time + addTime;
-        rndm = 10;
+        clone.velocity = transform.up * _speed;
+        _timer = Time.time + _addTime;
+        _rand = 10;
     }
 
     public void SpawnCubeLeft()
     {
-        Rigidbody clone = Instantiate(Cube, new Vector3(transform.position.x - offset, transform.position.y), Cube.transform.rotation) as Rigidbody;
-        clone.velocity = transform.up * speed;
-        Timer = Time.time + addTime;
-        rndm = 10;
+        Rigidbody clone = Instantiate(Cube, new Vector3(transform.position.x - _offset, transform.position.y), Cube.transform.rotation) as Rigidbody;
+        clone.velocity = transform.up * _speed;
+        _timer = Time.time + _addTime;
+        _rand = 10;
     }
 
     public void SpawnCubeRight()
     {
-        Rigidbody clone = Instantiate(Cube, new Vector3(transform.position.x + offset, transform.position.y), Cube.transform.rotation) as Rigidbody;
-        clone.velocity = transform.up * speed;
-        Timer = Time.time + addTime;
-        rndm = 10;
+        Rigidbody clone = Instantiate(Cube, new Vector3(transform.position.x + _offset, transform.position.y), Cube.transform.rotation) as Rigidbody;
+        clone.velocity = transform.up * _speed;
+        _timer = Time.time + _addTime;
+        _rand = 10;
     }
 
     public void SpawnBigCubeRight()
     {
-        Rigidbody clone = Instantiate(bigCube, new Vector3(transform.position.x + offset, transform.position.y), Cube.transform.rotation) as Rigidbody;
-        clone.velocity = transform.up * speed;
-        Timer = Time.time + addTime;
-        rndm = 10;
+        Rigidbody clone = Instantiate(bigCube, new Vector3(transform.position.x + _offset, transform.position.y), Cube.transform.rotation) as Rigidbody;
+        clone.velocity = transform.up * _speed;
+        _timer = Time.time + _addTime;
+        _rand = 10;
     }
 
     public void SpawnBigCubeLeft()
     {
-        Rigidbody clone = Instantiate(bigCube, new Vector3(transform.position.x - offset, transform.position.y), Cube.transform.rotation) as Rigidbody;
-        clone.velocity = transform.up * speed;
-        Timer = Time.time + addTime;
-        rndm = 10;
+        Rigidbody clone = Instantiate(bigCube, new Vector3(transform.position.x - _offset, transform.position.y), Cube.transform.rotation) as Rigidbody;
+        clone.velocity = transform.up * _speed;
+        _timer = Time.time + _addTime;
+        _rand = 10;
     }
 
     public void SpawnCubeTwo()
     {
         Rigidbody clone = Instantiate(twoCube, transform.position, transform.rotation) as Rigidbody;
-        clone.velocity = transform.up * speed;
-        Timer = Time.time + addTime;
-        rndm = 10;
+        clone.velocity = transform.up * _speed;
+        _timer = Time.time + _addTime;
+        _rand = 10;
     }
 
     public void Retry()                             //kui vajutatud "Retry" nupp siis...
@@ -139,83 +136,83 @@ public class Obstacles : MonoBehaviour
 
     public void Tutorial()
     {
-        if(leftFreeze.lost | rightFreeze.lost)
+        if(_leftFreeze.lost | _rightFreeze.lost)
         {
             tutorialRightText.SetActive(false);
             tutorialLeftText.SetActive(false);
             tutorialSplitText.SetActive(false);
 
-            if (holdTimer + delayTwo < Time.time & tutorialchosen)
+            if (_holdTimer + _delayTwo < Time.time & _isTutorial)
             {
                 SceneManager.LoadScene(1);
             }
-            else if(PlayerPrefs.GetInt("DifficultyOption", 0) == 0 & !tutorialchosen)
+            else if(PlayerPrefs.GetInt("DifficultyOption", 0) == 0 & !_isTutorial)
             {
                 tutorialLostPanelEasy.SetActive(true);
-                holdTimer = Time.time;
-                tutorialchosen = true;
+                _holdTimer = Time.time;
+                _isTutorial = true;
             }
-            else if(PlayerPrefs.GetInt("DifficultyOption", 0) != 0 & !tutorialchosen)
+            else if(PlayerPrefs.GetInt("DifficultyOption", 0) != 0 & !_isTutorial)
             {
                 tutorialLostPanel.SetActive(true);
                 PlayerPrefs.SetInt("DifficultyOption", 0);
-                holdTimer = Time.time;
-                tutorialchosen = true;
+                _holdTimer = Time.time;
+                _isTutorial = true;
             }
         }
-        else if (spawnCount.spawnCount == 0)
+        else if (_spawnCount.spawnCount == 0)
         {
             tutorialRightText.SetActive(true);
-            if (!buttonIsPressed.rightIsPressed)
+            if (!_buttonIsPressed.rightIsPressed)
             {
-                holdTimer = Time.time;
+                _holdTimer = Time.time;
             }
-            else if (buttonIsPressed.rightIsPressed)
+            else if (_buttonIsPressed.rightIsPressed)
             {
-                if (holdTimer + delay < Time.time)
+                if (_holdTimer + _delay < Time.time)
                 {
                     SpawnBigCubeLeft();
                 }
             }
         }
-        else if (scoreRead.score == 1 & spawnCount.spawnCount == 1)
+        else if (_scoreRead.score == 1 & _spawnCount.spawnCount == 1)
         {
             tutorialRightText.SetActive(false);
             tutorialLeftText.SetActive(true);
-            if (!buttonIsPressed.leftIsPressed)
+            if (!_buttonIsPressed.leftIsPressed)
             {
-                holdTimer = Time.time;
+                _holdTimer = Time.time;
             }
-            else if (buttonIsPressed.leftIsPressed)
+            else if (_buttonIsPressed.leftIsPressed)
             {
-                if (holdTimer + delay < Time.time)
+                if (_holdTimer + _delay < Time.time)
                 {
                     SpawnBigCubeRight();
-                    holdTimer = Time.time;
+                    _holdTimer = Time.time;
                 }
             }
         }
-        else if (scoreRead.score == 2 & spawnCount.spawnCount == 2)
+        else if (_scoreRead.score == 2 & _spawnCount.spawnCount == 2)
         {
             tutorialLeftText.SetActive(false);
             tutorialSplitText.SetActive(true);
-            if (!buttonIsPressed.rightIsPressed | !buttonIsPressed.leftIsPressed)
+            if (!_buttonIsPressed.rightIsPressed | !_buttonIsPressed.leftIsPressed)
             {
-                holdTimer = Time.time;
+                _holdTimer = Time.time;
             }
-            else if (buttonIsPressed.rightIsPressed & buttonIsPressed.leftIsPressed)
+            else if (_buttonIsPressed.rightIsPressed & _buttonIsPressed.leftIsPressed)
             {
-                if (holdTimer + delay < Time.time)
+                if (_holdTimer + _delay < Time.time)
                 {
                     SpawnBigCubeMid();
-                    holdTimer = Time.time;
+                    _holdTimer = Time.time;
                 }
             }
         }
-        else if(scoreRead.score == 3 & spawnCount.spawnCount == 3)
+        else if(_scoreRead.score == 3 & _spawnCount.spawnCount == 3)
         {
             tutorialSplitText.SetActive(false);
-            if(holdTimer + delayTwo < Time.time)
+            if(_holdTimer + _delayTwo < Time.time)
             {
                 PlayerPrefs.SetInt("TutorialToggle", 0);
             }
@@ -226,24 +223,24 @@ public class Obstacles : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("DifficultyOption", 0) == 0)
         {
-            speed = speedEasy;
+            _speed = speedEasy;
             addSpeed = speedAddEasy;
-            addTime = addTimeEasy;
-            pause = pauseEasy;
+            _addTime = addTimeEasy;
+            _pause = pauseEasy;
         }
         else if (PlayerPrefs.GetInt("DifficultyOption", 0) == 1)
         {
-            speed = speedNormal;
+            _speed = speedNormal;
             addSpeed = speedAddNormal;
-            addTime = addTimeNormal;
-            pause = pauseNormal;
+            _addTime = addTimeNormal;
+            _pause = pauseNormal;
         }
         else if (PlayerPrefs.GetInt("DifficultyOption", 0) == 2)
         {
-            speed = speedHard;
+            _speed = speedHard;
             addSpeed = speedAddHard;
-            addTime = addTimeHard;
-            pause = pauseHard;
+            _addTime = addTimeHard;
+            _pause = pauseHard;
         }
     }
 
@@ -263,17 +260,17 @@ public class Obstacles : MonoBehaviour
 
     public void Start()                                     //enne mängu algust määrab osadele muutujatele arvud{
     {
-        Timer = Time.time;
+        _timer = Time.time;
         //addTime = 1.25f;     //1.7
         //speed = -15f;                                           //nt1: vastaste algne kiirus
         timeAdd = 0.10f;                                        //nt2: vastaste "sündimis" kiirus, mida kiirem seda tihedamalt vastaseid tuleb}
                                                                 //addSpeed = 4f;      //
 
-        scoreRead = scoreAdder.GetComponent<ScoreAdd>();
-        spawnCount = scoreCounter.GetComponent<SpawnCountAdd>();    //tänu sellele saab teistest scriptidest arve kätte{
-        leftFreeze = left.GetComponent<Loss>();                     //nt: saab kätte kas mäng on kaotatud, mis määratakse "ControlLeft" ja "ControlRight" scriptis}
-        rightFreeze = right.GetComponent<Loss>();
-        buttonIsPressed = left.GetComponent<ControlLeft>();
+        _scoreRead = scoreAdder.GetComponent<ScoreAdd>();
+        _spawnCount = scoreCounter.GetComponent<SpawnCountAdd>();    //tänu sellele saab teistest scriptidest arve kätte{
+        _leftFreeze = left.GetComponent<Loss>();                     //nt: saab kätte kas mäng on kaotatud, mis määratakse "ControlLeft" ja "ControlRight" scriptis}
+        _rightFreeze = right.GetComponent<Loss>();
+        _buttonIsPressed = left.GetComponent<ControlLeft>();
         
         DifficultyReader();
         TrailReader();
@@ -283,57 +280,57 @@ public class Obstacles : MonoBehaviour
     {
         if(PlayerPrefs.GetInt("TutorialToggle", 0) == 0)
         {
-            if (leftFreeze.lost | rightFreeze.lost)     //kui vastane puudutab Right või Left cube'i siis...
+            if (_leftFreeze.lost | _rightFreeze.lost)     //kui vastane puudutab Right või Left cube'i siis...
             {
                 endPanel.SetActive(true);               //toob ette "Retry" nupu
                 pauseButton.SetActive(false);           //peidab pausi nupu
                 return;
             }
-            else if (pauseTimer < Time.time)
+            else if (_pauseTimer < Time.time)
             {
-                if (!stop)                              //kui skoor on 10 jaguv arv, ehk iga 10 skoori tagant(nt:20,30,40 jne.)...
+                if (!_stop)                              //kui skoor on 10 jaguv arv, ehk iga 10 skoori tagant(nt:20,30,40 jne.)...
                 {
-                    addTime -= timeAdd;                         //...kiirendab vastaste ilmumist
-                    speed -= addSpeed;                          //annab vastastele kiirust juurde
-                    stop = true;                                //ja annab märku, et kaks ülemist asja on tehtud, et need ei jääks ainult suurenema
+                    _addTime -= timeAdd;                         //...kiirendab vastaste ilmumist
+                    _speed -= addSpeed;                          //annab vastastele kiirust juurde
+                    _stop = true;                                //ja annab märku, et kaks ülemist asja on tehtud, et need ei jääks ainult suurenema
                 }
-                else if (Timer < Time.time)             //kui timer on 0 jõudnud siis...
+                else if (_timer < Time.time)             //kui timer on 0 jõudnud siis...
                 {
-                    rndm = Random.Range(0, 8);                  //valib uue vastase suvaliselt
-                    if (rndm == 1)                  //väike keskmine kuup(kui valitud 1 või 8 siis loob väikese keskel oleva kuubi)
+                    _rand = Random.Range(0, 8);                  //valib uue vastase suvaliselt
+                    if (_rand == 1)                  //väike keskmine kuup(kui valitud 1 või 8 siis loob väikese keskel oleva kuubi)
                     {
                         SpawnCubeMid();
                     }
-                    else if (rndm == 2)                         //väike parem kuup(kui valitud 2 siis oob väikese paremal oleva kuubi jne.)
+                    else if (_rand == 2)                         //väike parem kuup(kui valitud 2 siis oob väikese paremal oleva kuubi jne.)
                     {
                         SpawnCubeRight();
                     }
-                    else if (rndm == 3)                         //väike vasak kuup
+                    else if (_rand == 3)                         //väike vasak kuup
                     {
                         SpawnCubeLeft();
                     }
-                    else if (rndm == 4)                         //väikesed vasakul ja paremal kuubid
+                    else if (_rand == 4)                         //väikesed vasakul ja paremal kuubid
                     {
                         SpawnCubeTwo();
                     }
-                    else if (rndm == 5)                         //Suur parem kuup
+                    else if (_rand == 5)                         //Suur parem kuup
                     {
                         SpawnBigCubeRight();
                     }
-                    else if (rndm == 6)                         //Suur vasak kuup
+                    else if (_rand == 6)                         //Suur vasak kuup
                     {
                         SpawnBigCubeLeft();
                     }
-                    else if (rndm == 7)                         //Suur keskmine kuup
+                    else if (_rand == 7)                         //Suur keskmine kuup
                     {
                         SpawnBigCubeMid();
                     }
                 }
-                if (spawnCount.spawnCount == 10)        //kui 10 vastast on sündinud siis..
+                if (_spawnCount.spawnCount == 10)        //kui 10 vastast on sündinud siis..
                 {
-                    pauseTimer = Time.time + pause;         //lisab timerile, mis teeb pausi, aega(2.5s)
-                    spawnCount.spawnCount = 0;              //resetib timeri
-                    stop = false;                           //keelab uute vastaste loomise
+                    _pauseTimer = Time.time + _pause;         //lisab timerile, mis teeb pausi, aega(2.5s)
+                    _spawnCount.spawnCount = 0;              //resetib timeri
+                    _stop = false;                           //keelab uute vastaste loomise
                 }
             }
         }

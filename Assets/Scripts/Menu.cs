@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
@@ -10,7 +9,7 @@ public class Menu : MonoBehaviour
 
     public GameObject statisticsMenu;
     public GameObject settingsMenu;
-    public GameObject MenuPanel;
+    public GameObject menuPanel;
     
 
     public Text totalTries;
@@ -29,18 +28,18 @@ public class Menu : MonoBehaviour
     }
     public void ToStatistics()          //kui vajutatakse "Stats" nuppu siis...{
     {
-        MenuPanel.SetActive(false);         //kaotab menüü ekraani
+        menuPanel.SetActive(false);         //kaotab menüü ekraani
         statisticsMenu.SetActive(true);     //toob ette statistika ekraani}
     }
     public void BackToMenu()            //kui vajutatakse "back" nuppu siis...
     {
-        MenuPanel.SetActive(true);          //toob ette menüü
+        menuPanel.SetActive(true);          //toob ette menüü
         statisticsMenu.SetActive(false);    //kaotab satistika ekraani
         settingsMenu.SetActive(false);      //kaotab sätte ekraani
     }
     public void ToSettings()            //kui vajutatakse "settings" nuppu siis...
     {
-        MenuPanel.SetActive(false);         //kaotab menüü
+        menuPanel.SetActive(false);         //kaotab menüü
         settingsMenu.SetActive(true);       //toob ette sätte ekraani
     }
     public void TrailsToggle()          //kui "saba" on/off nuppu vajutada siis...

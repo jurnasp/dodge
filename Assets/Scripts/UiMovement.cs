@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class UiMovement : MonoBehaviour
 {
@@ -11,7 +9,7 @@ public class UiMovement : MonoBehaviour
 
     public float step;
     public float startTime;
-    public float journeyLenght = 0.6f;//0.6f
+    public float journeyLength = 0.6f;//0.6f
     public float speed = 0.6f; // 0.6f
     public float fractJourney;
 
@@ -38,7 +36,7 @@ public class UiMovement : MonoBehaviour
                     startLScreen = true;
                 }
                 float distanceCovered = (Time.time - startTime) * speed;
-                fractJourney = distanceCovered / journeyLenght;
+                fractJourney = distanceCovered / journeyLength;
                 camerapos.transform.position = Vector3.Lerp(camerapos.transform.position, new Vector3(0, 10, -20), fractJourney);
             }
             else if (!button.rightIsPressed)
@@ -50,8 +48,8 @@ public class UiMovement : MonoBehaviour
                     startLScreen = false;
                 }
                 float distanceCovered = (Time.time - startTime) * speed;
-                fractJourney = distanceCovered / journeyLenght;
-                camerapos.transform.position = Vector3.Lerp(camerapos.transform.position, new Vector3(-(journeyLenght), 10, -20), fractJourney);
+                fractJourney = distanceCovered / journeyLength;
+                camerapos.transform.position = Vector3.Lerp(camerapos.transform.position, new Vector3(-(journeyLength), 10, -20), fractJourney);
             }
         }
         if (button.rightIsPressed)
@@ -65,8 +63,8 @@ public class UiMovement : MonoBehaviour
                     startRScreen = false;
                 }
                 float distanceCovered = (Time.time - startTime) * speed;
-                fractJourney = distanceCovered / journeyLenght;
-                camerapos.transform.position = Vector3.Lerp(camerapos.transform.position, new Vector3(journeyLenght, 10, -20), fractJourney);
+                fractJourney = distanceCovered / journeyLength;
+                camerapos.transform.position = Vector3.Lerp(camerapos.transform.position, new Vector3(journeyLength, 10, -20), fractJourney);
             }
         }
         if (!button.rightIsPressed & !button.leftIsPressed)
@@ -79,7 +77,7 @@ public class UiMovement : MonoBehaviour
                 startLScreen = true;
             }
             float distanceCovered = (Time.time - startTime) * speed;
-            fractJourney = distanceCovered / journeyLenght;
+            fractJourney = distanceCovered / journeyLength;
             camerapos.transform.position = Vector3.Lerp(camerapos.transform.position, new Vector3(0, 10, -20), fractJourney);
         }
     }

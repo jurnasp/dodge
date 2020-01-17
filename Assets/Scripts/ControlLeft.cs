@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 //controlLeft ja controlRight on täpselt vastanduvad üksteisele.
 
@@ -8,13 +6,13 @@ public class ControlLeft : MonoBehaviour
 {
     public GameObject left;
     public GameObject right;
-    public float Speed = 50f;
+    public float speed = 50f;
     public float border = 5.2f;
-    public float midborder = -0.6f;
+    public float midBorder = -0.6f;
     public float odd = 1.2f;
-    public Vector3 startpos;
-    public bool leftIsPressed = false;
-    public bool rightIsPressed = false;
+    public Vector3 startPos;
+    public bool leftIsPressed;
+    public bool rightIsPressed;
 
     public void OnLeftButtonDown()
     {
@@ -35,7 +33,7 @@ public class ControlLeft : MonoBehaviour
 
     public void Start()
     {
-        startpos = left.transform.position;
+        startPos = left.transform.position;
     }
 
     public void Update()
@@ -47,36 +45,36 @@ public class ControlLeft : MonoBehaviour
 
         if (leftIsPressed)//kui vasakule ekraani poolele vajutada siis...
         {
-            left.transform.Translate(-Speed * Time.deltaTime, 0, 0);    //liigub vasakule ja...
+            left.transform.Translate(-speed * Time.deltaTime, 0, 0);    //liigub vasakule ja...
             if (left.transform.position.x < -border)                    //kui liikumise tagajärjel jõudis vasaku ekraani äärele siis...
             {
                 transform.position = new Vector3(-border, transform.position.y, transform.position.z);     //ei lase üle ääre minna
             }
         }
-        else if (left.transform.position.x < midborder)     //ja kui pole midagi vajutatud siis ja näeb et pole keskel siis...
+        else if (left.transform.position.x < midBorder)     //ja kui pole midagi vajutatud siis ja näeb et pole keskel siis...
         {
-            left.transform.position = Vector3.MoveTowards(left.transform.position, startpos, Speed * Time.deltaTime);// hakkab kesmise poole liikuma
+            left.transform.position = Vector3.MoveTowards(left.transform.position, startPos, speed * Time.deltaTime);// hakkab kesmise poole liikuma
         }
 
         if (rightIsPressed)//kui parem pool ekraani on vajutatud siis...
         {
-            left.transform.Translate(Speed * Time.deltaTime, 0, 0); // hakkab paremale liikuma
+            left.transform.Translate(speed * Time.deltaTime, 0, 0); // hakkab paremale liikuma
             if (left.transform.position.x > border - odd)           //kui samal ajal liikudes jõuab paremale ekraani äärde siis...
             {
                 transform.position = new Vector3(border - odd, transform.position.y, transform.position.z); //ei lase üle ekraani ääre
             }
             if (leftIsPressed)//kui parema ekraani poolega koos on vasak ka vajutatud siis...
             {
-                left.transform.Translate(-Speed * Time.deltaTime, 0, 0);//hakkab vasak vasakule liikuma
+                left.transform.Translate(-speed * Time.deltaTime, 0, 0);//hakkab vasak vasakule liikuma
                 if (left.transform.position.x < -border)                //kui vasak jõuab vasakule ekraani äärele siis...
                 {
                     transform.position = new Vector3(-border, transform.position.y, transform.position.z);//ei lase üle ääre
                 }
             }
         }
-        else if (left.transform.position.x > midborder)
+        else if (left.transform.position.x > midBorder)
         {
-            left.transform.position = Vector3.MoveTowards(left.transform.position, startpos, Speed * Time.deltaTime);
+            left.transform.position = Vector3.MoveTowards(left.transform.position, startPos, speed * Time.deltaTime);
         }
     }
 }

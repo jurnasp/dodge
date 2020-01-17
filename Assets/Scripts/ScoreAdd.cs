@@ -1,14 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class ScoreAdd : MonoBehaviour
 {
     public GameObject left;
     public GameObject right;
-    Loss leftMove;
-    Loss rightMove;
+    private Loss _leftMove;
+    private Loss _rightMove;
     public Text scoreText;
     public Text highScoreText;
     public int score;
@@ -31,8 +29,8 @@ public class ScoreAdd : MonoBehaviour
             highScoreText.text = PlayerPrefs.GetInt("HighScoreHard", 0).ToString();
             difficulty.text = "HARD";
         }
-        leftMove = left.GetComponent<Loss>();
-        rightMove = right.GetComponent<Loss>();
+        _leftMove = left.GetComponent<Loss>();
+        _rightMove = right.GetComponent<Loss>();
     }
     public void ScoreRestart()          //kui vajutatakse "Retry" siis...{
     {
@@ -42,11 +40,11 @@ public class ScoreAdd : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)  //kui vastane möödub Right'ist ja Left'ist siis...{
     {
-        if (leftMove.lost | rightMove.lost)         //kui mäng on kaotatud ja vastased mööduvad siis...{
+        if (_leftMove.lost | _rightMove.lost)         //kui mäng on kaotatud ja vastased mööduvad siis...{
         {
             return;                                     //ei lisa skoorile +1}
         }
-        else if (!leftMove.lost | !rightMove.lost)                                  //aga kui mäng pole kaotatud siis...{
+        else if (!_leftMove.lost | !_rightMove.lost)                                  //aga kui mäng pole kaotatud siis...{
         {
             score++;                                                                    //lisab skoorile +1
             PlayerPrefs.SetInt("TotalScore", PlayerPrefs.GetInt("TotalScore", 0) + 1);  //lisab koguskoorile ühe otsa
