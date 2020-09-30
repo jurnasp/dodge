@@ -1609,6 +1609,7 @@ GameObject:
   - component: {fileID: 1028797407}
   - component: {fileID: 1028797406}
   - component: {fileID: 1028797405}
+  - component: {fileID: 1028797409}
   m_Layer: 0
   m_Name: ScoreTrigger
   m_TagString: Untagged
@@ -1669,6 +1670,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1028797409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028797404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a7590721c0cec7e192d4cf1c71b117d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highScoreText: {fileID: 1677915781}
+  bufferLeeway: 50
 --- !u!1001 &1044637121
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3075,6 +3090,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1923289876}
   - component: {fileID: 1923289877}
+  - component: {fileID: 1923289878}
   m_Layer: 0
   m_Name: enemySpawner
   m_TagString: Untagged
@@ -3108,6 +3124,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe69b08a58a57614a8818fcdf001a528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1923289878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923289875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba12455b7b4ca070ae212234079728e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabs:
+  - {fileID: 4526484693824169302, guid: e132d06c23194a3d1986c7b215951551, type: 3}
+  - {fileID: 6322934085733464135, guid: c3d244611ae0e47afa296edc07735d46, type: 3}
+  - {fileID: 6224515137216747812, guid: 329a936aab2b67b7c81a46223358d749, type: 3}
 --- !u!1 &1958194783
 GameObject:
   m_ObjectHideFlags: 0

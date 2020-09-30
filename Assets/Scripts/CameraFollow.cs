@@ -6,7 +6,7 @@ public class CameraFollow : MonoBehaviour
     public float smoothSpeed = 0.125f;
     public Vector3 offset;
 
-    void FixedUpdate ()
+    private void FixedUpdate ()
     {
         var desiredPosition = GetTarget() + offset;
         var smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
@@ -20,7 +20,7 @@ public class CameraFollow : MonoBehaviour
         {
             sum += target.position;
         }
-        var length = targets.Length;
-        return new Vector3(sum.x / length, sum.y / length, sum.z / length);
+        sum /= targets.Length;
+        return sum;
     }
 }

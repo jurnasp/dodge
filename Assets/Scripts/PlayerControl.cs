@@ -32,7 +32,7 @@ public class PlayerControl : MonoBehaviour
         _rightPressed = false;
     }
 
-    public void Start()
+    public void Awake()
     {
         _leftCubeStartX = playerCubeLeft.transform.position.x;
         _rightCubeStartX = playerCubeRight.transform.position.x;
@@ -40,15 +40,16 @@ public class PlayerControl : MonoBehaviour
 
     public void Update()
     {
+        ArrowControls();
         if (_rightPressed && _leftPressed) {
-            playerCubeRight.transform.position = MoveTo(playerCubeRight, border);
-            playerCubeLeft.transform.position = MoveTo(playerCubeLeft, -border);
+            playerCubeRight.transform.position = MoveTo(playerCubeRight, _rightCubeStartX + border);
+            playerCubeLeft.transform.position = MoveTo(playerCubeLeft, _leftCubeStartX - border);
         } else if (_rightPressed) {
-            playerCubeRight.transform.position = MoveTo(playerCubeRight, border);
-            playerCubeLeft.transform.position = MoveTo(playerCubeLeft, _leftCubeStartX);
+            playerCubeRight.transform.position = MoveTo(playerCubeRight, _rightCubeStartX + border);
+            playerCubeLeft.transform.position = MoveTo(playerCubeLeft, _leftCubeStartX + border);
         } else if (_leftPressed) {
-            playerCubeRight.transform.position = MoveTo(playerCubeRight, _rightCubeStartX);
-            playerCubeLeft.transform.position = MoveTo(playerCubeLeft, -border);
+            playerCubeRight.transform.position = MoveTo(playerCubeRight, _rightCubeStartX - border);
+            playerCubeLeft.transform.position = MoveTo(playerCubeLeft, _leftCubeStartX - border);
         } else {
             playerCubeRight.transform.position = MoveTo(playerCubeRight, _rightCubeStartX);
             playerCubeLeft.transform.position = MoveTo(playerCubeLeft, _leftCubeStartX);
@@ -60,6 +61,26 @@ public class PlayerControl : MonoBehaviour
         if(Math.Abs(cube.transform.position.x - toCord) < 0.1f)
             return cube.transform.position;
         
-        return Vector3.MoveTowards(cube.transform.position,new Vector3(toCord, 0, 0), speed * Time.deltaTime);
+        return Vector3.MoveTowards(cube.transform.position,Vector3.right * toCord, speed * Time.deltaTime);
+    }
+
+    private void ArrowControls()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            OnLeftButtonDown();
+        }
+        if(Input.GetKeyUp(KeyCode.LeftArrow))
+        {
+            OnLeftButtonUp();
+        }
+        if(Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            OnRightButtonDown();
+        }
+        if(Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            OnRightButtonUp();
+        }
     }
 }
