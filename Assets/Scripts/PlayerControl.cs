@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using Unity.UNetWeaver;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
 {

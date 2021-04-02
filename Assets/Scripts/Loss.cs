@@ -11,16 +11,16 @@ public class Loss : MonoBehaviour
         _obstacles = startTrigger.GetComponent<Obstacles>();
     }
 
-    private void OnCollisionEnter()  //kui miski objekti puudutab siis...
+    private void OnCollisionEnter()
     {
-        lost = true;                                    //annab teada, et mäng on kaotatud
+        lost = true;
     }
 
     public void Update()
     {
-        if (!_obstacles)    //kui mäng algas uuesti siis...
+        if (!_obstacles)
         {
-            lost = false;                               //muudab kaotuse muutuja uuesti vääriks(siis ei saada teistele, et mäng on kaotatud)
-        }                                               //ja saab mäng uuesti alata
+            lost = false;
+        }
     }
 }
