@@ -1,17 +1,19 @@
 ﻿using UnityEngine;
 
-public class UiMovement : MonoBehaviour
+namespace UI
 {
-    public GameObject left;
+    public class UiMovement : MonoBehaviour
+    {
+        public GameObject left;
 
-    public float step;
-    public float startTime;
-    public float journeyLength = 0.6f;//0.6f
-    public float speed = 0.6f; // 0.6f
-    public float fractJourney;
+        public float step;
+        public float startTime;
+        public float journeyLength = 0.6f;//0.6f
+        public float speed = 0.6f; // 0.6f
+        public float fractJourney;
 
-    private bool startLScreen;
-    private bool startRScreen;
+        private bool startLScreen;
+        private bool startRScreen;
     
 /*    public void LateUpdate()
     {
@@ -72,4 +74,5 @@ public class UiMovement : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, new Vector3(0, 10, -20), fractJourney);
         }
     }*/
+    }
 }

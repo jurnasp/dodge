@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
-public class Obstacles : MonoBehaviour
-{/*
+namespace Enemy
+{
+    public class Obstacles : MonoBehaviour
+    {/*
     public GameObject scoreCounter;
     public GameObject scoreAdder;
 
@@ -342,4 +342,5 @@ public class Obstacles : MonoBehaviour
             Tutorial();
         }#1#
     }*/
+    }
 }

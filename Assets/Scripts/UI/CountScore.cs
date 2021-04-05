@@ -1,40 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CountScore : MonoBehaviour
+namespace UI
 {
-    private Stack<int> _bufferStack;
-    private const int BufferSize = 20;
-    private int _score;
-    public Text highScoreText;
-    private int _timeSinceLastPush;
-    public int bufferLeeway = 50;
-
-    private void Start()
+    public class CountScore : MonoBehaviour
     {
-        _bufferStack = new Stack<int>(BufferSize);
-        _timeSinceLastPush = DateTime.Now.Millisecond;
-    }
+        public Text highScoreText;
+        
+        private int _score;
+        
+        private Stack<int> _bufferStack;
+        private const int BufferSize = 20;
 
-    public void OnTriggerStay(Collider other)
-    {
-        if (other.transform.position.z < transform.position.z
-            && !_bufferStack.Contains(other.GetInstanceID()))
+        private void Start()
         {
-            // @Todo Test if check is right 
-            if (_bufferStack.Count > BufferSize)
-                _bufferStack.Pop();
-            _bufferStack.Push(other.GetInstanceID());
+            _bufferStack = new Stack<int>(BufferSize);
+        }
 
-            // @Todo Implement better way of detecting grouped Obstacle GameObjects
-            if(_timeSinceLastPush > DateTime.Now.Millisecond - bufferLeeway)
+        public void OnTriggerExit(Collider other)
+        {
+            var instanceID = GetParentInstanceID(other);
+            if (!IsEnemy(other) || _bufferStack.Contains(instanceID) || !UnderTrigger(other)) return;
+            
+            if (_bufferStack.Count > BufferSize - 1)
+                _bufferStack.Pop();
+                
+            _bufferStack.Push(instanceID);
+
+            _score++;
+            highScoreText.text = _score.ToString();
+        }
+
+        private static bool IsEnemy(Collider other)
+        {
+            return other.CompareTag("Enemy");
+        }
+
+        private bool UnderTrigger(Collider other)
+        {
+            return other.transform.position.y < transform.position.y;
+        }
+
+        private int GetParentInstanceID(Component other)
+        {
+            var parent = other.transform.parent;
+            var result = other.GetInstanceID();
+            while (parent != null)
             {
-                _score++;
-                highScoreText.text = _score.ToString();
+                result = parent.GetInstanceID();
+ 
+                parent = parent.parent;
             }
-            _timeSinceLastPush = DateTime.Now.Millisecond;
+
+            return result;
         }
     }
 }

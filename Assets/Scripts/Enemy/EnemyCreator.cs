@@ -1,41 +1,108 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Random = System.Random;
 
-public class EnemyCreator : MonoBehaviour
+namespace Enemy
 {
-    public List<GameObject> enemyPrefabs;
+    public class EnemyCreator : MonoBehaviour
+    {
+        public List<GameObject> enemyPrefabs;
     
-    // @Todo Rename all of these
-    private float _speed = 15f;
-    private float speedAdd_ = 4f;
-    private float _addTime = 1.25f;
-    private float _pause = 2.5f;
+        public float enemySpeed = 15f;
+        private float _enemySpeedAdd = 5f;
+        
+        private float _enemySpawnTimeIncrement = 0.25f;
+        
+        public float pauseBetweenEnemySpawns = 2.5f;
+        private float _enemySpawnTimeoutEnd;
+        
+        public float pauseBetweenSpawnCycles = 5f;
+        private float _spawnCyclePauseEnd;
+        
+        private Random _random;
 
-    private float _timer;
-    private Random _random;
+        private int _spawnCount;
+        private const int SpawnCycleSize = 10;
 
-    public void Start()
-    {
-        _timer = Time.time;
-        _random = new Random();
-    }
-
-    public void Update()
-    {
-        if (Time.time > _timer + _pause)
+        public void Start()
         {
-            _timer = Time.time;
+            _enemySpawnTimeoutEnd = Time.time;
+            _random = new Random();
+        }
 
+        public void Update()
+        {
+            if (IsSpawnCyclePause()) {return;}
+
+            if (CanSpawnEnemy())
+            {
+                SpawnRandomEnemy();
+            }
+        }
+
+        private bool IsSpawnCyclePause()
+        {
+            return Time.time < _spawnCyclePauseEnd;
+        }
+
+        private bool CanSpawnEnemy()
+        {
+            return Time.time > _enemySpawnTimeoutEnd;
+        }
+
+        private void SpawnRandomEnemy()
+        {
+            var enemy = Instantiate(GetRandomEnemyPrefab());
+            enemy.transform.position += transform.position;
+            enemy.GetComponent<EnemyMove>().speed = enemySpeed;
+            
+            _spawnCount++;
+            
+            if (HasSpawnedEnoughEnemiesForSpawnCyclePause())
+            {
+                StartSpawnCyclePause();
+                IncreaseDifficulty();
+                return;
+            }
+            StartPauseBetweenSpawns();
+        }
+
+        private GameObject GetRandomEnemyPrefab()
+        {
             var index = _random.Next(enemyPrefabs.Count);
-            var go = Instantiate(enemyPrefabs[index], transform.position, enemyPrefabs[index].transform.rotation);
+            var enemy = enemyPrefabs[index];
+            return enemy;
+        }
 
-            EnemyMove em = go.GetComponent<EnemyMove>();
+        private bool HasSpawnedEnoughEnemiesForSpawnCyclePause()
+        {
+            return _spawnCount % SpawnCycleSize == 0;
+        }
 
-            em.speed = _speed;
-            em.toY = -5;
+        private void StartSpawnCyclePause()
+        {
+            _spawnCyclePauseEnd = Time.time + pauseBetweenSpawnCycles;
+        }
+
+        private void IncreaseDifficulty()
+        {
+            IncreaseSpeed();
+            DecreaseTimeBetweenSpawns();
+        }
+
+        public void IncreaseSpeed()
+        {
+            enemySpeed += _enemySpeedAdd;
+        }
+
+        public void DecreaseTimeBetweenSpawns()
+        {
+            pauseBetweenEnemySpawns -= _enemySpawnTimeIncrement;
+        }
+
+        private void StartPauseBetweenSpawns()
+        {
+            _enemySpawnTimeoutEnd = Time.time + pauseBetweenEnemySpawns;
         }
     }
 }

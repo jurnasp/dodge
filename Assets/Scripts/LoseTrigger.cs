@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 
-public class Loss : MonoBehaviour
+public class LoseTrigger : MonoBehaviour
 {
-    public bool lost = false;
+    public bool lost;
     public GameObject startTrigger;
-    private Obstacles _obstacles;
+    private Enemy.Obstacles _obstacles;
 
     private void Start()
     {
-        _obstacles = startTrigger.GetComponent<Obstacles>();
+        _obstacles = startTrigger.GetComponent<Enemy.Obstacles>();
     }
 
     private void OnCollisionEnter()

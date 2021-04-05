@@ -1,17 +1,19 @@
 ﻿using UnityEngine;
 
-public class EnemyMove : MonoBehaviour
+namespace Enemy
 {
-    public float speed = 15f;
-    public int toY = -5;
-
-    void Update()
+    public class EnemyMove : MonoBehaviour
     {
-        transform.position = Vector3.MoveTowards(transform.position, Vector3.up * -2000, Time.deltaTime * speed);
-    }
+        public float speed = 15f;
 
-    void OnBecameInvisible()
-    {
-        Destroy(gameObject);
+        public void Update()
+        {
+            transform.position = Vector3.MoveTowards(transform.position, Vector3.down * 2000, Time.deltaTime * speed);
+        }
+
+        public void AddSpeed(float add)
+        {
+            speed += add;
+        }
     }
 }

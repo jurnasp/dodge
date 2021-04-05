@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 
-public class SpawnCountAdd : MonoBehaviour
+namespace UI
 {
-    public int spawnCount;
-    private void OnTriggerEnter(Collider other)
+    public class SpawnCountAdd : MonoBehaviour
     {
-        spawnCount += 1;
+        public int spawnCount;
+        private void OnTriggerEnter(Collider other)
+        {
+            spawnCount += 1;
+        }
     }
 }
