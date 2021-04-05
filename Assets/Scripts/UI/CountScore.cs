@@ -7,8 +7,7 @@ namespace UI
     public class CountScore : MonoBehaviour
     {
         public Text highScoreText;
-        
-        private int _score;
+        public int Score { get; private set; }
         
         private Stack<int> _bufferStack;
         private const int BufferSize = 20;
@@ -28,8 +27,8 @@ namespace UI
                 
             _bufferStack.Push(instanceID);
 
-            _score++;
-            highScoreText.text = _score.ToString();
+            Score++;
+            highScoreText.text = Score.ToString();
         }
 
         private static bool IsEnemy(Collider other)

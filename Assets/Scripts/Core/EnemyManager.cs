@@ -26,7 +26,7 @@ namespace Core
         public Rigidbody twoCube;
         public Rigidbody bigMiddleCube;
 
-        private UI.SpawnCountAdd _spawnCount;
+        private UI.CountScore _spawnCount;
         private UI.ScoreAdd _scoreRead;
         private LoseTrigger _leftFreeze;
         private LoseTrigger _rightFreeze;
@@ -79,7 +79,7 @@ namespace Core
             timeAdd = 0.10f;                                        
         
             _scoreRead = scoreAdder.GetComponent<UI.ScoreAdd>();
-            _spawnCount = scoreCounter.GetComponent<UI.SpawnCountAdd>();    
+            _spawnCount = scoreCounter.GetComponent<UI.CountScore>();    
             _leftFreeze = left.GetComponent<LoseTrigger>();                     
             _rightFreeze = right.GetComponent<LoseTrigger>();
             // _buttonIsPressed = left.GetComponent<ControlLeft>();
@@ -124,7 +124,6 @@ namespace Core
         private void InvokeSpawnCyclePause()
         {
             _pauseTimer = Time.time + _pause;
-            _spawnCount.spawnCount = 0;
             _stop = false;
         }
 
@@ -135,7 +134,7 @@ namespace Core
 
         private bool IsFullCycleSpawned()
         {
-            return _spawnCount.spawnCount == 10;
+            return false;
         }
 
 
