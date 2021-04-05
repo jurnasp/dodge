@@ -560,8 +560,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced07b88c8862ca4787836787a83d824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resumePanel: {fileID: 0}
-  pauseButton: {fileID: 0}
+  resumePanel: {fileID: 1520284987}
+  pauseButton: {fileID: 274896681}
 --- !u!1 &312019324
 GameObject:
   m_ObjectHideFlags: 0
@@ -947,7 +947,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 669164038}
-  - component: {fileID: 669164037}
   - component: {fileID: 669164036}
   - component: {fileID: 669164039}
   - component: {fileID: 669164035}
@@ -987,14 +986,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &669164037
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 669164034}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &669164038
 Transform:
   m_ObjectHideFlags: 0
@@ -1003,8 +994,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 669164034}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.01, z: 0}
-  m_LocalScale: {x: 20, y: 1, z: 6}
+  m_LocalPosition: {x: 0, y: 3.5, z: 0}
+  m_LocalScale: {x: 12, y: 8, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -1022,7 +1013,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highScoreText: {fileID: 1677915781}
-  countColliderZPositionUnder: -0.5
 --- !u!1 &692108903
 GameObject:
   m_ObjectHideFlags: 0
@@ -2953,7 +2943,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1923289877}
+      - m_Target: {fileID: 0}
         m_MethodName: Retry
         m_Mode: 1
         m_Arguments:
@@ -3020,7 +3010,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1923289876}
-  - component: {fileID: 1923289877}
   - component: {fileID: 1923289878}
   m_Layer: 0
   m_Name: enemySpawner
@@ -3043,18 +3032,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1923289877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1923289875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe69b08a58a57614a8818fcdf001a528, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1923289878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3069,14 +3046,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 8182880118419099050, guid: 329a936aab2b67b7c81a46223358d749, type: 3}
-  - {fileID: 9016882198504818777, guid: 116e0be2a5d30149d848852bb3104f39, type: 3}
-  - {fileID: 1827248931028728069, guid: 4c3775c8d196e2a5ba774d833639327c, type: 3}
-  - {fileID: 1035909735110998567, guid: d2c5eef153ddc055bad564230d8656df, type: 3}
-  - {fileID: 6927335297394275646, guid: f269e7d8c08ee9dbf8743389b74365cc, type: 3}
-  - {fileID: 4161695675390380932, guid: 206f239bf13b764fbbd26875513e991d, type: 3}
-  speed: 15
-  pauseBetweenEnemySpawns: 2.5
-  pauseBetweenSpawnCycles: 5
+  - {fileID: 7334467455841862416, guid: 43b55b4ed908c3863a2a881de94dfcba, type: 3}
+  - {fileID: 7334467455841862416, guid: 416ebf65ad229bd9b9427e8029f87a0b, type: 3}
+  - {fileID: 4405971196044416731, guid: 390e5f580096d6a86bdee95c147ca7d3, type: 3}
+  - {fileID: 4405971196044416731, guid: 88abf0a380fe7c181b0246bd1f8c55fe, type: 3}
+  - {fileID: 9156720261995887013, guid: a94fa2d045dc294eba1210b206f342d7, type: 3}
+  enemySpeed: 15
 --- !u!1 &1958194783
 GameObject:
   m_ObjectHideFlags: 0
