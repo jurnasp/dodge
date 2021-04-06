@@ -1,4 +1,4 @@
-namespace Dodge.Core
+namespace Dodge.Enemy.Spawner
 {
     public interface IEnemySpawnTimer
     {
