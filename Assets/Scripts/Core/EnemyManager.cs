@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using Dodge.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
-namespace Core
+namespace Dodge.Core
 {
     public class EnemyManager : MonoBehaviour
     {
@@ -26,8 +27,8 @@ namespace Core
         public Rigidbody twoCube;
         public Rigidbody bigMiddleCube;
 
-        private UI.CountScore _spawnCount;
-        private UI.ScoreAdd _scoreRead;
+        private CountScore _spawnCount;
+        private ScoreAdd _scoreRead;
         private LoseTrigger _leftFreeze;
         private LoseTrigger _rightFreeze;
 
@@ -78,8 +79,8 @@ namespace Core
             _timer = Time.time;
             timeAdd = 0.10f;                                        
         
-            _scoreRead = scoreAdder.GetComponent<UI.ScoreAdd>();
-            _spawnCount = scoreCounter.GetComponent<UI.CountScore>();    
+            _scoreRead = scoreAdder.GetComponent<ScoreAdd>();
+            _spawnCount = scoreCounter.GetComponent<CountScore>();    
             _leftFreeze = left.GetComponent<LoseTrigger>();                     
             _rightFreeze = right.GetComponent<LoseTrigger>();
             // _buttonIsPressed = left.GetComponent<ControlLeft>();

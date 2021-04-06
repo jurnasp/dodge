@@ -1,8 +1,7 @@
 using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
 
-namespace Core
+namespace Dodge.Core
 {
     public class MonoBehaviourParentMessenger : MonoBehaviour
     {

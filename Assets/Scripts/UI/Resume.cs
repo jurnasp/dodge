@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace UI
+namespace Dodge.UI
 {
     public class Resume : MonoBehaviour
     {

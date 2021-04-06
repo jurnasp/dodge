@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Core
+namespace Dodge.Core
 {
     public class PlayerController : MonoBehaviour
     {

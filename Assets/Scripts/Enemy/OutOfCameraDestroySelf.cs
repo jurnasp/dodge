@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Enemy
+namespace Dodge.Enemy
 {
     public class OutOfCameraDestroySelf : MonoBehaviour
     {

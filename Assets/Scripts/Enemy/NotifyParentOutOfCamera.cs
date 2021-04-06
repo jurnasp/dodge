@@ -1,6 +1,6 @@
-﻿using Core;
+﻿using Dodge.Core;
 
-namespace Enemy
+namespace Dodge.Enemy
 {
     public class NotifyParentOutOfCamera : MonoBehaviourParentMessenger
     {

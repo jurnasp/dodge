@@ -1,26 +1,29 @@
 ﻿using UnityEngine;
 
-public class LoseTrigger : MonoBehaviour
+namespace Dodge
 {
-    public bool lost;
-    public GameObject startTrigger;
-    private Enemy.Obstacles _obstacles;
-
-    private void Start()
+    public class LoseTrigger : MonoBehaviour
     {
-        _obstacles = startTrigger.GetComponent<Enemy.Obstacles>();
-    }
+        public bool lost;
+        public GameObject startTrigger;
+        private Enemy.Obstacles _obstacles;
 
-    private void OnCollisionEnter()
-    {
-        lost = true;
-    }
-
-    public void Update()
-    {
-        if (!_obstacles)
+        private void Start()
         {
-            lost = false;
+            _obstacles = startTrigger.GetComponent<Enemy.Obstacles>();
+        }
+
+        private void OnCollisionEnter()
+        {
+            lost = true;
+        }
+
+        public void Update()
+        {
+            if (!_obstacles)
+            {
+                lost = false;
+            }
         }
     }
 }
