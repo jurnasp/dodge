@@ -8,5 +8,9 @@ namespace Dodge.Core
         void InvokePause();
 
         void InvokeLongPause();
+
+        void IncrementSpawnCount();
+
+        bool HasSpawnedEnoughEnemiesForLongPause();
     }
 }

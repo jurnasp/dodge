@@ -1,9 +1,9 @@
 ﻿using Dodge.Core;
 using UnityEngine;
 
-namespace Dodge.Enemy.Normal
+namespace Dodge.Enemy.Spawner
 {
-    public class SpawnTimer : MonoBehaviour, IEnemySpawnTimer
+    public class TenCycleSpawnTimer : MonoBehaviour, IEnemySpawnTimer
     {
         public float pauseBetweenEnemySpawns = 2.5f;
         private float _enemySpawnTimeoutEnd;
@@ -11,6 +11,9 @@ namespace Dodge.Enemy.Normal
         public float pauseBetweenSpawnCycles = 5f;
         private float _spawnCyclePauseEnd;
         private const float EnemySpawnTimeIncrement = 0.25f;
+        
+        private int _spawnCount;
+        private const int SpawnCycleSize = 10;
         
 
         public bool CanSpawn()
@@ -46,6 +49,16 @@ namespace Dodge.Enemy.Normal
         public void InvokeLongPause()
         {
             _spawnCyclePauseEnd = Time.time + pauseBetweenSpawnCycles;
+        }
+
+        public void IncrementSpawnCount()
+        {
+            _spawnCount++;
+        }
+
+        public bool HasSpawnedEnoughEnemiesForLongPause()
+        {
+            return _spawnCount % SpawnCycleSize == 0;
         }
     }
 }

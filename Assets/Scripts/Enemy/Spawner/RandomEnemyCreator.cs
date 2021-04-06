@@ -4,10 +4,10 @@ using Dodge.Core;
 using UnityEngine;
 using Random = System.Random;
 
-namespace Dodge.Enemy.Normal
+namespace Dodge.Enemy.Spawner
 {
     [Serializable]
-    public class RandomCreator : MonoBehaviour, IEnemyCreator
+    public class RandomEnemyCreator : MonoBehaviour, IEnemyCreator
     {
         public List<GameObject> enemyPrefabs;
     
