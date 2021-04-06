@@ -15,7 +15,7 @@ namespace Dodge.Enemy.Normal
 
         public bool CanSpawn()
         {
-            return IsSpawnCyclePause() && IsEnemySpawnTimeout();
+            return !IsSpawnCyclePause() && !IsEnemySpawnTimeout();
         }
 
         private bool IsSpawnCyclePause()

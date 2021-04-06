@@ -5,13 +5,19 @@ namespace Dodge.Enemy
 {
     public abstract class AbstractEnemySpawner : MonoBehaviour
     {
-        private IEnemyCreator _enemyCreator;
-        private IEnemySpawnTimer _enemySpawnTimer;
+        protected IEnemyCreator enemyCreator;
+        protected IEnemySpawnTimer spawnTimer;
         
         public void Start()
         {
-            _enemyCreator = gameObject.GetComponent<IEnemyCreator>();
-            _enemySpawnTimer = gameObject.GetComponent<IEnemySpawnTimer>();
+            enemyCreator = gameObject.GetComponent<IEnemyCreator>();
+            spawnTimer = gameObject.GetComponent<IEnemySpawnTimer>();
+        }
+
+        protected void IncreaseDifficulty()
+        {
+            spawnTimer.IncreaseDifficulty();
+            enemyCreator.IncreaseDifficulty();
         }
     }
 }
