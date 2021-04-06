@@ -1,4 +1,4 @@
-namespace Dodge.Enemy
+namespace Dodge.Core
 {
     public interface IEnemyCreator
     {

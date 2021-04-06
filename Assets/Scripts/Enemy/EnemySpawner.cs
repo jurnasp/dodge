@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Dodge.Core;
+using UnityEngine;
 
 namespace Dodge.Enemy
 {
