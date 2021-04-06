@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Dodge.UI
+namespace Dodge.Game
 {
     public class CountScore : MonoBehaviour
     {

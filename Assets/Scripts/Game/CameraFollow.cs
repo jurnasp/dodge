@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Dodge
+namespace Dodge.Game
 {
     public class CameraFollow : MonoBehaviour
     {

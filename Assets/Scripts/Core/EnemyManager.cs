@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Dodge.Game;
 using Dodge.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;

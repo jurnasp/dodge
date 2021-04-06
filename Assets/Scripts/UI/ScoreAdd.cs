@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Dodge.Game;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Dodge.UI

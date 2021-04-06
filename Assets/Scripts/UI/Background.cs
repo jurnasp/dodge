@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Dodge
+namespace Dodge.UI
 {
     public class Background : MonoBehaviour {
         public Rigidbody cube;
