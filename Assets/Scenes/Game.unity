@@ -928,6 +928,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: right
       objectReference: {fileID: 0}
+    - target: {fileID: 5448862658113492537, guid: 27722d4985ed4d2e6af22ccbe1e8cdaf,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e192eb9b8247ee4a0afd54d16d120f9d, type: 2}
     - target: {fileID: 5448862658113492540, guid: 27722d4985ed4d2e6af22ccbe1e8cdaf,
         type: 3}
       propertyPath: m_RootOrder
@@ -1791,6 +1796,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: left
       objectReference: {fileID: 0}
+    - target: {fileID: 5448862658113492537, guid: 27722d4985ed4d2e6af22ccbe1e8cdaf,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dbd87e18fc676ad45a719514c341134f, type: 2}
     - target: {fileID: 5448862658113492540, guid: 27722d4985ed4d2e6af22ccbe1e8cdaf,
         type: 3}
       propertyPath: m_RootOrder
@@ -3819,7 +3829,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1434867397}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
