@@ -4,7 +4,7 @@ namespace Enemy
 {
     public class EnemySpawner : MonoBehaviour
     {
-        public EnemyCreator enemyCreator;
+        private IEnemyCreator _enemyCreator;
         
         public float pauseBetweenEnemySpawns = 2.5f;
         private float _enemySpawnTimeoutEnd;
@@ -16,13 +16,18 @@ namespace Enemy
         private int _spawnCount;
         private const int SpawnCycleSize = 10;
         
+        public void Start()
+        {
+            _enemyCreator = gameObject.GetComponent<IEnemyCreator>();
+        }
+        
         public void Update()
         {
             if (IsSpawnCyclePause()) return;
 
             if (IsEnemySpawnTimeout()) return;
             
-            enemyCreator.SpawnRandomEnemy();
+            _enemyCreator.CreateEnemy();
             
             _spawnCount++;
             
@@ -57,7 +62,7 @@ namespace Enemy
 
         private void IncreaseDifficulty()
         {
-            enemyCreator.IncreaseSpeed();
+            _enemyCreator.IncreaseDifficulty();
             DecreaseTimeBetweenSpawns();
         }
 

@@ -1,24 +1,26 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Random = System.Random;
 
 namespace Enemy
 {
-    public class EnemyCreator : MonoBehaviour
+    [Serializable]
+    public class RandomEnemyCreator : MonoBehaviour, IEnemyCreator
     {
         public List<GameObject> enemyPrefabs;
     
         public float enemySpeed = 15f;
-        private float _enemySpeedAdd = 5f;
-        
-        
+        private const float EnemySpeedAdd = 5f;
+
+
         private Random _random;
         public void Start()
         {
             _random = new Random();
         }
 
-        public void SpawnRandomEnemy()
+        public void CreateEnemy()
         {
             var enemy = Instantiate(GetRandomEnemyPrefab());
             
@@ -33,9 +35,9 @@ namespace Enemy
             return enemy;
         }
 
-        public void IncreaseSpeed()
+        public void IncreaseDifficulty()
         {
-            enemySpeed += _enemySpeedAdd;
+            enemySpeed += EnemySpeedAdd;
         }
     }
 }
