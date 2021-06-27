@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using Dodge.Library.Game;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,23 +10,20 @@ namespace Dodge.Game
         public int Score { get; private set; }
         private const string EnemyTag = "Enemy";
         
-        private Stack<int> _bufferStack;
+        private LimitedStack<int> _limitedStack;
         private const int BufferSize = 20;
 
         private void Start()
         {
-            _bufferStack = new Stack<int>(BufferSize);
+            _limitedStack = new LimitedStack<int>(BufferSize);
         }
 
         public void OnTriggerExit(Collider other)
         {
             var instanceID = GetParentInstanceID(other);
-            if (!IsEnemy(other) || _bufferStack.Contains(instanceID) || !UnderTrigger(other)) return;
-            
-            if (_bufferStack.Count > BufferSize - 1)
-                _bufferStack.Pop();
-                
-            _bufferStack.Push(instanceID);
+            if (!IsEnemy(other) || _limitedStack.Contains(instanceID) || !UnderTrigger(other)) return;
+
+            _limitedStack.Push(instanceID);
 
             Score++;
             highScoreText.text = Score.ToString();
