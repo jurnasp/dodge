@@ -2,16 +2,16 @@ using System.Collections.Generic;
 
 namespace Dodge.Library.Game
 {
-    public class LimitedStack<T>
+    public class LimitedQueue<T>
     {
-        private readonly Stack<T> _bufferStack;
-
+        private readonly Queue<T> _bufferStack;
         private readonly int _size;
+        public int Count => _bufferStack.Count;
         
-        public LimitedStack(int size)
+        public LimitedQueue(int size)
         {
             _size = size;
-            _bufferStack = new Stack<T>(_size);
+            _bufferStack = new Queue<T>(_size);
         }
 
         public bool Contains(T value)
@@ -22,9 +22,9 @@ namespace Dodge.Library.Game
         public void Push(T value)
         {
             if (_bufferStack.Count > _size - 1)
-                _bufferStack.Pop();
+                _bufferStack.Dequeue();
                 
-            _bufferStack.Push(value);
+            _bufferStack.Enqueue(value);
         }
     }
 }

@@ -10,20 +10,20 @@ namespace Dodge.Game
         public int Score { get; private set; }
         private const string EnemyTag = "Enemy";
         
-        private LimitedStack<int> _limitedStack;
+        private LimitedQueue<int> _limitedQueue;
         private const int BufferSize = 20;
 
         private void Start()
         {
-            _limitedStack = new LimitedStack<int>(BufferSize);
+            _limitedQueue = new LimitedQueue<int>(BufferSize);
         }
 
         public void OnTriggerExit(Collider other)
         {
             var instanceID = GetParentInstanceID(other);
-            if (!IsEnemy(other) || _limitedStack.Contains(instanceID) || !UnderTrigger(other)) return;
+            if (!IsEnemy(other) || _limitedQueue.Contains(instanceID) || !UnderTrigger(other)) return;
 
-            _limitedStack.Push(instanceID);
+            _limitedQueue.Push(instanceID);
 
             Score++;
             highScoreText.text = Score.ToString();
