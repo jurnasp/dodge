@@ -8,12 +8,12 @@ namespace Dodge.Game
         public Transform[] targets;
         public float smoothSpeed = 0.125f;
         private Vector3 _offset;
-        public bool offsetCurrentPosition = true;
+        public bool offsetByStartingPosition = true;
 
 
         private void Start()
         {
-            if (offsetCurrentPosition)
+            if (offsetByStartingPosition)
             {
                 _offset = transform.position;
             }
