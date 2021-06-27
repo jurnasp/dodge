@@ -1,6 +1,7 @@
+using Dodge.Core;
 using UnityEngine;
 
-namespace Dodge.Core
+namespace Dodge.Theme
 {
     public class Themeable : MonoBehaviour
     {

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Dodge.Core
+namespace Dodge.Theme
 {
     public class ThemeManager : MonoBehaviour
     {
@@ -26,9 +26,10 @@ namespace Dodge.Core
 
         #endregion
 
-        public Theme currentTheme;
+        public Dodge.Theme.Theme currentTheme;
 
-        private readonly Dictionary<string, Theme> _themeDictionary = new Dictionary<string, Theme>();
+        private readonly Dictionary<string, Dodge.Theme.Theme> _themeDictionary =
+            new Dictionary<string, Dodge.Theme.Theme>();
 
         private string SelectedThemeName
         {
@@ -36,7 +37,7 @@ namespace Dodge.Core
             set => PlayerPrefs.SetString("ThemeName", value);
         }
 
-        public Camera camera;
+        public new Camera camera;
 
         public void Start()
         {
@@ -50,7 +51,7 @@ namespace Dodge.Core
             SelectTheme(themeName);
 
             ApplyThemeToInstantiatedObjects();
-            
+
             ApplyThemeToBackground();
         }
 
@@ -58,7 +59,7 @@ namespace Dodge.Core
         {
             if (_themeDictionary.Count == 0)
             {
-                var themes = Resources.LoadAll<Theme>("Themes");
+                var themes = Resources.LoadAll<Dodge.Theme.Theme>("Themes");
                 foreach (var theme in themes)
                 {
                     _themeDictionary.Add(theme.themeName, theme);

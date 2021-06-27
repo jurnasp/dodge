@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 
-namespace Dodge.Core
+namespace Dodge.Theme
 {
     [CreateAssetMenu(fileName = "Themes", menuName = "ScriptableObjects/ThemeScriptableObject", order = 1)]
     public class Theme : ScriptableObject
@@ -46,6 +46,7 @@ namespace Dodge.Core
                     Debug.LogWarning($"Missing material in {themeName}");
                     continue;
                 }
+
                 _materialDictionary.Add(material.name, material);
             }
         }
