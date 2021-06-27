@@ -1,27 +1,30 @@
-using System;
 using UnityEngine;
 
 namespace Dodge.Core
 {
     public class Themeable : MonoBehaviour
     {
+        private MeshRenderer MeshRenderer => gameObject.GetComponent<MeshRenderer>();
+
         public void Start()
         {
-            if (gameObject.GetComponent<MeshRenderer>() == null)
+            if (MeshRenderer == null)
             {
-                throw new MissingComponentException($"{typeof(MeshRenderer)} missing for object with {typeof(Themeable)} script.");
+                Debug.LogError(
+                    $"{typeof(MeshRenderer)} missing for object({gameObject.name}) with {typeof(Themeable)} script.");
             }
-            ThemeManager.Instance.LoadThemeToThemeable(this);
+
+            ThemeManager.Instance.ApplyThemeToThemeable(this);
         }
 
         public string GetMaterialName()
         {
-            return gameObject.GetComponent<MeshRenderer>().material.name.Replace("(Instance)", "").Trim();
+            return MeshRenderer.material.name.Replace("(Instance)", "").Trim();
         }
 
         public void SetMaterial(Material material)
         {
-            gameObject.GetComponent<MeshRenderer>().material = material;
+            MeshRenderer.material = material;
         }
     }
 }

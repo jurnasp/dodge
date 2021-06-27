@@ -23,14 +23,29 @@ namespace Dodge.Core
         public Material FindMaterialWithName(string materialName)
         {
             if (_materialDictionary == null) LoadMaterials();
-            return _materialDictionary.ContainsKey(materialName) ? _materialDictionary[materialName] : null;
+            return MaterialExists(materialName) ? _materialDictionary[materialName] : DefaultMaterial();
         }
-        
+
+        private static Material DefaultMaterial()
+        {
+            return new Material(Shader.Find("Standard")) {color = Color.magenta};
+        }
+
+        private bool MaterialExists(string materialName)
+        {
+            return _materialDictionary.ContainsKey(materialName) && _materialDictionary[materialName] != null;
+        }
+
         private void LoadMaterials()
         {
             _materialDictionary = new Dictionary<string, Material>();
             foreach (var material in materials)
             {
+                if (material.GetType() != typeof(Material) || material == null)
+                {
+                    Debug.LogWarning($"Missing material in {themeName}");
+                    continue;
+                }
                 _materialDictionary.Add(material.name, material);
             }
         }

@@ -2244,6 +2244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentTheme: {fileID: 11400000, guid: 00865c10cf8f9bf5ab9214e87c1b2a71, type: 2}
+  camera: {fileID: 1434867397}
 --- !u!4 &1227719331
 Transform:
   m_ObjectHideFlags: 0
@@ -2464,7 +2465,7 @@ MonoBehaviour:
   - {fileID: 2023607996}
   - {fileID: 1396896762}
   smoothSpeed: 0.125
-  offsetCurrentPosition: 1
+  offsetByStartingPosition: 1
 --- !u!20 &1434867397
 Camera:
   m_ObjectHideFlags: 0
