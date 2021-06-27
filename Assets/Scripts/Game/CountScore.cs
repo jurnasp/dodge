@@ -8,6 +8,7 @@ namespace Dodge.Game
     {
         public Text highScoreText;
         public int Score { get; private set; }
+        private const string EnemyTag = "Enemy";
         
         private Stack<int> _bufferStack;
         private const int BufferSize = 20;
@@ -33,7 +34,7 @@ namespace Dodge.Game
 
         private static bool IsEnemy(Collider other)
         {
-            return other.CompareTag("Enemy");
+            return other.CompareTag(EnemyTag);
         }
 
         private bool UnderTrigger(Collider other)

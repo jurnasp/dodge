@@ -2,9 +2,9 @@ using System.Collections;
 using NUnit.Framework;
 using UnityEngine.TestTools;
 
-namespace Tests
+namespace Tests.EditMode
 {
-    public class FirstTest
+    public class EnemyTimerTests
     {
         // A Test behaves as an ordinary method
         [Test]

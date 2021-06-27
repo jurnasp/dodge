@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using Dodge.Core;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Dodge.UI
@@ -7,6 +9,7 @@ namespace Dodge.UI
     {
         public GameObject resumePanel;
         public GameObject pauseButton;
+
         public void PauseButtonPress()
         {
             Time.timeScale = 0;

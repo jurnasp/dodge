@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6f9ad04dd643f0944f129582f71b02, type: 3}
+  m_Name: Default
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 2100000, guid: 347e12d4a7220400d8c315cc70ffb8ca, type: 2}
+  - {fileID: 2100000, guid: e4be3f4825541734e95ce341144db7bf, type: 2}
+  - {fileID: 2100000, guid: dbd87e18fc676ad45a719514c341134f, type: 2}
+  - {fileID: 2100000, guid: e192eb9b8247ee4a0afd54d16d120f9d, type: 2}
+  themeName: Default
+  scoreToUnlock: 0

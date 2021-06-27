@@ -10,7 +10,7 @@ namespace Dodge.Core
         protected void NotifyParentsOfEvent(string eventName) {
             foreach (var parentMonoBehaviour in parentMonoBehaviours)
             {
-                parentMonoBehaviour.SendMessage(eventName);
+                parentMonoBehaviour.SendMessage(eventName, SendMessageOptions.DontRequireReceiver);
             }
         }
     }

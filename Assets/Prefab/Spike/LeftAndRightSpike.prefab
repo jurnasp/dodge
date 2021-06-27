@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8370704319262600013}
   - component: {fileID: 1783205587485557633}
   - component: {fileID: 7803114021465072436}
+  - component: {fileID: 6913149193676899500}
   m_Layer: 0
   m_Name: RightEdge
   m_TagString: Enemy
@@ -56,10 +57,12 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e4be3f4825541734e95ce341144db7bf, type: 2}
+  - {fileID: 2100000, guid: e3b272763efd0b0418ee7bed46b1a15f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -80,6 +83,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &1783205587485557633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,10 +108,22 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: -5492795984738644507, guid: 4c2f56fa9837b56b89d1b1dbf4622dcf, type: 3}
+--- !u!114 &6913149193676899500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355434943882978019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 850ee9e1e4f214796bb358a8be62d1e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4040701881443557968
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,6 +137,7 @@ GameObject:
   - component: {fileID: 4902484780930166906}
   - component: {fileID: 7583146235580777811}
   - component: {fileID: 3159509544468962553}
+  - component: {fileID: 3084113180526015707}
   m_Layer: 0
   m_Name: LeftEdge
   m_TagString: Enemy
@@ -164,10 +181,12 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e4be3f4825541734e95ce341144db7bf, type: 2}
+  - {fileID: 2100000, guid: e3b272763efd0b0418ee7bed46b1a15f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -188,6 +207,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &7583146235580777811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,10 +232,22 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 2734609074368177517, guid: 8fc92734bf7e685b8a6e5cba2cfa0467, type: 3}
+--- !u!114 &3084113180526015707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4040701881443557968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 850ee9e1e4f214796bb358a8be62d1e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8182880118419099050
 GameObject:
   m_ObjectHideFlags: 0

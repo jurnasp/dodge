@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 namespace Dodge.Game
 {
@@ -28,10 +29,7 @@ namespace Dodge.Game
         private Vector3 GetTarget()
         {
             var sum = new Vector3();
-            foreach (var target in targets)
-            {
-                sum += target.position;
-            }
+            sum = targets.Aggregate(sum, (current, target) => current + target.position);
             sum /= targets.Length;
             return sum;
         }
