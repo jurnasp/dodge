@@ -10,8 +10,7 @@ namespace Dodge.Theme
 
         public Theme currentTheme;
 
-        private readonly Dictionary<string, Theme> _themeDictionary =
-            new Dictionary<string, Theme>();
+        private Dictionary<string, Theme> _themeDictionary;
 
         private string SelectedThemeName
         {
@@ -21,18 +20,15 @@ namespace Dodge.Theme
 
         public void Start()
         {
-            FindThemes();
+            _themeDictionary = InitThemes();
 
             ApplyTheme("Blues");
         }
 
-        private void FindThemes()
+        private static Dictionary<string, Theme> InitThemes()
         {
-            if (_themeDictionary.Count == 0)
-            {
-                var themes = Resources.LoadAll<Theme>("Themes");
-                foreach (var theme in themes) _themeDictionary.Add(theme.themeName, theme);
-            }
+            var themes = Resources.LoadAll<Theme>("Themes");
+            return themes.ToDictionary(theme => theme.themeName);
         }
 
         public void ApplyTheme(string themeName)
