@@ -26,6 +26,8 @@ namespace Dodge.Theme
 
         #endregion
 
+        public ThemeApplier themeApplier;
+
         public Theme currentTheme;
 
         private readonly Dictionary<string, Theme> _themeDictionary =
@@ -37,20 +39,11 @@ namespace Dodge.Theme
             set => PlayerPrefs.SetString("ThemeName", value);
         }
 
-        public ThemeApplier themeApplier;
-
         public void Start()
         {
             FindThemes();
 
             ApplyTheme("Blues");
-        }
-
-        public void ApplyTheme(string themeName)
-        {
-            SelectTheme(themeName);
-
-            themeApplier.Apply(FindObjectsOfType<Themeable>(), currentTheme);
         }
 
         private void FindThemes()
@@ -63,6 +56,13 @@ namespace Dodge.Theme
                     _themeDictionary.Add(theme.themeName, theme);
                 }
             }
+        }
+
+        public void ApplyTheme(string themeName)
+        {
+            SelectTheme(themeName);
+
+            themeApplier.Apply(FindObjectsOfType<Themeable>(), currentTheme);
         }
 
         private void SelectTheme(string themeName)
@@ -88,12 +88,10 @@ namespace Dodge.Theme
             return _themeDictionary.ContainsKey(themeName);
         }
 
-
         public void ApplyThemeToThemeable(Themeable themeableObject)
         {
             themeApplier.ApplyThemeToThemeable(themeableObject, currentTheme);
         }
-
 
         public string[] GetThemeNames()
         {
