@@ -6,26 +6,6 @@ namespace Dodge.Theme
 {
     public class ThemeManager : MonoBehaviour
     {
-        #region Singleton
-
-        private static ThemeManager _instance;
-
-        public static ThemeManager Instance => _instance;
-
-        private void Awake()
-        {
-            if (_instance != null && _instance != this)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                _instance = this;
-            }
-        }
-
-        #endregion
-
         public ThemeApplier themeApplier;
 
         public Theme currentTheme;
@@ -51,10 +31,7 @@ namespace Dodge.Theme
             if (_themeDictionary.Count == 0)
             {
                 var themes = Resources.LoadAll<Theme>("Themes");
-                foreach (var theme in themes)
-                {
-                    _themeDictionary.Add(theme.themeName, theme);
-                }
+                foreach (var theme in themes) _themeDictionary.Add(theme.themeName, theme);
             }
         }
 
@@ -97,5 +74,19 @@ namespace Dodge.Theme
         {
             return _themeDictionary.Keys.ToArray();
         }
+
+        #region Singleton
+
+        public static ThemeManager Instance { get; private set; }
+
+        private void Awake()
+        {
+            if (Instance != null && Instance != this)
+                Destroy(gameObject);
+            else
+                Instance = this;
+        }
+
+        #endregion
     }
 }

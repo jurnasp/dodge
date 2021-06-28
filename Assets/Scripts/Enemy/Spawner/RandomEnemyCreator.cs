@@ -8,13 +8,14 @@ namespace Dodge.Enemy.Spawner
     [Serializable]
     public class RandomEnemyCreator : MonoBehaviour, IEnemyCreator
     {
-        public List<GameObject> enemyPrefabs;
-    
-        public float enemySpeed = 15f;
         private const float EnemySpeedAdd = 5f;
+        public List<GameObject> enemyPrefabs;
+
+        public float enemySpeed = 15f;
 
 
         private Random _random;
+
         public void Start()
         {
             _random = new Random();
@@ -23,9 +24,14 @@ namespace Dodge.Enemy.Spawner
         public void Create()
         {
             var enemy = Instantiate(GetRandomEnemyPrefab());
-            
+
             enemy.transform.position += transform.position;
             enemy.GetComponent<EnemyMove>().speed = enemySpeed;
+        }
+
+        public void IncreaseDifficulty()
+        {
+            enemySpeed += EnemySpeedAdd;
         }
 
         private GameObject GetRandomEnemyPrefab()
@@ -33,11 +39,6 @@ namespace Dodge.Enemy.Spawner
             var index = _random.Next(enemyPrefabs.Count);
             var enemy = enemyPrefabs[index];
             return enemy;
-        }
-
-        public void IncreaseDifficulty()
-        {
-            enemySpeed += EnemySpeedAdd;
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Dodge.Core
         public GameObject playerCubeRight;
 
         public InputManager input;
-        
+
         public float speed = 50f;
         public float border = 5.2f;
         private float _leftCubeStartX;
@@ -23,16 +23,23 @@ namespace Dodge.Core
 
         public void Update()
         {
-            if (input.RightPressed && input.LeftPressed) {
+            if (input.RightPressed && input.LeftPressed)
+            {
                 playerCubeRight.transform.position = MoveTo(playerCubeRight, _rightCubeStartX + border);
                 playerCubeLeft.transform.position = MoveTo(playerCubeLeft, _leftCubeStartX - border);
-            } else if (input.RightPressed) {
+            }
+            else if (input.RightPressed)
+            {
                 playerCubeRight.transform.position = MoveTo(playerCubeRight, _rightCubeStartX + border);
                 playerCubeLeft.transform.position = MoveTo(playerCubeLeft, _leftCubeStartX + border);
-            } else if (input.LeftPressed) {
+            }
+            else if (input.LeftPressed)
+            {
                 playerCubeRight.transform.position = MoveTo(playerCubeRight, _rightCubeStartX - border);
                 playerCubeLeft.transform.position = MoveTo(playerCubeLeft, _leftCubeStartX - border);
-            } else {
+            }
+            else
+            {
                 playerCubeRight.transform.position = MoveTo(playerCubeRight, _rightCubeStartX);
                 playerCubeLeft.transform.position = MoveTo(playerCubeLeft, _leftCubeStartX);
             }
@@ -40,10 +47,10 @@ namespace Dodge.Core
 
         private Vector3 MoveTo(GameObject cube, float toCord)
         {
-            if(Math.Abs(cube.transform.position.x - toCord) < 0.1f)
+            if (Math.Abs(cube.transform.position.x - toCord) < 0.1f)
                 return cube.transform.position;
-        
-            return Vector3.MoveTowards(cube.transform.position,Vector3.right * toCord, speed * Time.deltaTime);
+
+            return Vector3.MoveTowards(cube.transform.position, Vector3.right * toCord, speed * Time.deltaTime);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Dodge.Enemy;
+using UnityEngine;
 
 namespace Dodge.Game
 {
@@ -6,24 +7,21 @@ namespace Dodge.Game
     {
         public bool lost;
         public GameObject startTrigger;
-        private Enemy.Obstacles _obstacles;
+        private Obstacles _obstacles;
 
         private void Start()
         {
-            _obstacles = startTrigger.GetComponent<Enemy.Obstacles>();
+            _obstacles = startTrigger.GetComponent<Obstacles>();
+        }
+
+        public void Update()
+        {
+            if (!_obstacles) lost = false;
         }
 
         private void OnCollisionEnter()
         {
             lost = true;
-        }
-
-        public void Update()
-        {
-            if (!_obstacles)
-            {
-                lost = false;
-            }
         }
     }
 }

@@ -6,12 +6,11 @@ namespace Dodge.Core
     public class MonoBehaviourParentMessenger : MonoBehaviour
     {
         public List<MonoBehaviour> parentMonoBehaviours;
-        
-        protected void NotifyParentsOfEvent(string eventName) {
+
+        protected void NotifyParentsOfEvent(string eventName)
+        {
             foreach (var parentMonoBehaviour in parentMonoBehaviours)
-            {
                 parentMonoBehaviour.SendMessage(eventName, SendMessageOptions.DontRequireReceiver);
-            }
         }
     }
 }

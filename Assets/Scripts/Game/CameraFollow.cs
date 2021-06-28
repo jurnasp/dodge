@@ -7,19 +7,16 @@ namespace Dodge.Game
     {
         public Transform[] targets;
         public float smoothSpeed = 0.125f;
-        private Vector3 _offset;
         public bool offsetByStartingPosition = true;
+        private Vector3 _offset;
 
 
         private void Start()
         {
-            if (offsetByStartingPosition)
-            {
-                _offset = transform.position;
-            }
+            if (offsetByStartingPosition) _offset = transform.position;
         }
 
-        private void FixedUpdate ()
+        private void FixedUpdate()
         {
             var desiredPosition = GetTarget() + _offset;
             var smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);

@@ -1,6 +1,4 @@
-﻿using System;
-using Dodge.Core;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Dodge.UI
@@ -16,12 +14,14 @@ namespace Dodge.UI
             pauseButton.SetActive(false);
             resumePanel.SetActive(true);
         }
+
         public void ResumeButtonPress()
         {
             Time.timeScale = 1;
             pauseButton.SetActive(true);
             resumePanel.SetActive(false);
         }
+
         public void BackToMenu()
         {
             SceneManager.LoadScene(0);

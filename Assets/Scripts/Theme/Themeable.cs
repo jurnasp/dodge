@@ -1,4 +1,3 @@
-using Dodge.Core;
 using UnityEngine;
 
 namespace Dodge.Theme
@@ -10,10 +9,8 @@ namespace Dodge.Theme
         public void Start()
         {
             if (MeshRenderer == null)
-            {
                 Debug.LogError(
                     $"{typeof(MeshRenderer)} missing for object({gameObject.name}) with {typeof(Themeable)} script.");
-            }
 
             ThemeManager.Instance.ApplyThemeToThemeable(this);
         }

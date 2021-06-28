@@ -2,7 +2,8 @@
 
 namespace Dodge.UI
 {
-    public class Background : MonoBehaviour {
+    public class Background : MonoBehaviour
+    {
         public Rigidbody cube;
         public float speed = -1f;
         public float posX;
@@ -14,11 +15,15 @@ namespace Dodge.UI
 
         public void Update()
         {
-            if(startTime < Time.time)
+            if (startTime < Time.time)
             {
                 startTime = Time.time;
-                Rigidbody clone = Instantiate(cube, new Vector3(transform.position.x + posX, transform.position.y, transform.position.z), Random.rotation) as Rigidbody;
-                clone.velocity = (new Vector3(clone.transform.position.x, clone.transform.position.y - targetY, clone.transform.position.z) - clone.transform.position) * speed;
+                var clone = Instantiate(cube,
+                    new Vector3(transform.position.x + posX, transform.position.y, transform.position.z),
+                    Random.rotation);
+                clone.velocity =
+                    (new Vector3(clone.transform.position.x, clone.transform.position.y - targetY,
+                        clone.transform.position.z) - clone.transform.position) * speed;
                 posX = Random.Range(-range, range);
                 startTime = Time.time + addTime;
                 Destroy(clone.gameObject, destroyTime);

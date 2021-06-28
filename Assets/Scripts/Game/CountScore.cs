@@ -6,12 +6,12 @@ namespace Dodge.Game
 {
     public class CountScore : MonoBehaviour
     {
-        public Text highScoreText;
-        public int Score { get; private set; }
         private const string EnemyTag = "Enemy";
-        
-        private LimitedQueue<int> _limitedQueue;
         private const int BufferSize = 20;
+        public Text highScoreText;
+
+        private LimitedQueue<int> _limitedQueue;
+        public int Score { get; private set; }
 
         private void Start()
         {
@@ -46,7 +46,7 @@ namespace Dodge.Game
             while (parent != null)
             {
                 result = parent.GetInstanceID();
- 
+
                 parent = parent.parent;
             }
 

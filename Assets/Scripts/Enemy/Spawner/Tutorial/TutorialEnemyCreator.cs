@@ -6,13 +6,6 @@ namespace Dodge.Enemy.Spawner.Tutorial
     public class TutorialEnemyCreator : MonoBehaviour, IEnemyCreator
     {
         public float tutorialEnemySpeed = 15f;
-        
-        [Serializable]
-        public class TutorialEnemyToPanel
-        {
-            public GameObject tutorialPrefab;
-            public GameObject tutorialPanel ;
-        }
 
         public TutorialEnemyToPanel[] enemiesToPanels;
 
@@ -27,14 +20,9 @@ namespace Dodge.Enemy.Spawner.Tutorial
         public void Create()
         {
             var enemy = Instantiate(GetCurrentEnemyPrefab());
-            
+
             enemy.transform.position += transform.position;
             enemy.GetComponent<EnemyMove>().speed = tutorialEnemySpeed;
-        }
-
-        private GameObject GetCurrentEnemyPrefab()
-        {
-            return _currentEnemyToPanel.tutorialPrefab;
         }
 
         public void IncreaseDifficulty()
@@ -43,6 +31,11 @@ namespace Dodge.Enemy.Spawner.Tutorial
             _index++;
 
             ShowPanelAndPrepareEnemy();
+        }
+
+        private GameObject GetCurrentEnemyPrefab()
+        {
+            return _currentEnemyToPanel.tutorialPrefab;
         }
 
         private void ShowPanelAndPrepareEnemy()
@@ -59,6 +52,13 @@ namespace Dodge.Enemy.Spawner.Tutorial
         private void HidePanel()
         {
             _currentEnemyToPanel.tutorialPanel.SetActive(false);
+        }
+
+        [Serializable]
+        public class TutorialEnemyToPanel
+        {
+            public GameObject tutorialPrefab;
+            public GameObject tutorialPanel;
         }
     }
 }

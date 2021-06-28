@@ -22,70 +22,71 @@ namespace Dodge.Core
 
         [FormerlySerializedAs("obstacleList")] [SerializeField]
         public List<Rigidbody> enenmyList;
-    
+
         [FormerlySerializedAs("Cube")] public Rigidbody cube;
         public Rigidbody bigCube;
         public Rigidbody twoCube;
         public Rigidbody bigMiddleCube;
 
-        private CountScore _spawnCount;
-        private ScoreAdd _scoreRead;
-        private LoseTrigger _leftFreeze;
-        private LoseTrigger _rightFreeze;
-
         public int difficulty;
-
-        private float _timer;
-        private float _speed;
-        private float _addTime;
-        private float _offset = 6.6f;
-        private float _pauseTimer;
-        private float _pause = 2.5f;
-
-        private bool _stop;
 
         public float addSpeed;
         public float timeAdd;
 
-    
-        private float speedEasy = -8f;
-        private float speedNormal = -12f;
-        private float speedHard = -15f;
 
-        private float speedAddEasy = 3f;
-        private float speedAddNormal = 3.5f;
-        private float speedAddHard = 4f;
-
-        private float addTimeEasy = 1.75f;
-        private float addTimeNormal = 1.5f;
-        private float addTimeHard = 1.25f;
-    
-        private float pauseEasy = 3.5f;
-        private float pauseNormal = 2f;
-        private float pauseHard = 2.5f;
-
-    
         // private bool _isTutorial = false;
         public GameObject tutorialRightText;
         public GameObject tutorialLeftText;
         public GameObject tutorialSplitText;
         public GameObject tutorialLostPanel;
         public GameObject tutorialLostPanelEasy;
+        private float _addTime;
         private float _holdTimer;
+        private LoseTrigger _leftFreeze;
+        private readonly float _offset = 6.6f;
+        private float _pause = 2.5f;
+        private float _pauseTimer;
+        private LoseTrigger _rightFreeze;
+        private ScoreAdd _scoreRead;
+
+        private CountScore _spawnCount;
+        private float _speed;
+
+        private bool _stop;
+
+        private float _timer;
+
+        private readonly float addTimeEasy = 1.75f;
+        private readonly float addTimeHard = 1.25f;
+        private readonly float addTimeNormal = 1.5f;
+
+        private readonly float pauseEasy = 3.5f;
+        private readonly float pauseHard = 2.5f;
+        private readonly float pauseNormal = 2f;
+
+        private readonly float speedAddEasy = 3f;
+        private readonly float speedAddHard = 4f;
+        private readonly float speedAddNormal = 3.5f;
+
+
+        private readonly float speedEasy = -8f;
+        private readonly float speedHard = -15f;
+
+        private readonly float speedNormal = -12f;
         // private float _delay = 2f;
         // private float _delayTwo = 3.5f;
 
-        public void Start()                                     
+        public void Start()
         {
             _timer = Time.time;
-            timeAdd = 0.10f;                                        
-        
+            timeAdd = 0.10f;
+
             _scoreRead = scoreAdder.GetComponent<ScoreAdd>();
-            _spawnCount = scoreCounter.GetComponent<CountScore>();    
-            _leftFreeze = left.GetComponent<LoseTrigger>();                     
+            _spawnCount = scoreCounter.GetComponent<CountScore>();
+            _leftFreeze = left.GetComponent<LoseTrigger>();
             _rightFreeze = right.GetComponent<LoseTrigger>();
             // _buttonIsPressed = left.GetComponent<ControlLeft>();
-        
+
             LoadDifficultyConfigurations();
             LoadTrailConfiguration();
         }
@@ -97,30 +98,27 @@ namespace Dodge.Core
                 // Tutorial();
             }
 
-            if (IsLose())     
+            if (IsLose())
             {
-                endPanel.SetActive(true);               
-                pauseButton.SetActive(false);           
+                endPanel.SetActive(true);
+                pauseButton.SetActive(false);
                 return;
             }
 
             if (!IsSpawnCyclePause()) return;
             if (!_stop)
             {
-                _addTime -= timeAdd;                         
-                _speed -= addSpeed;                          
-                _stop = true;                                
+                _addTime -= timeAdd;
+                _speed -= addSpeed;
+                _stop = true;
             }
-            else if (CanSpawnEnemy())             
+            else if (CanSpawnEnemy())
             {
                 SpawnRandomEnemy();
                 _timer = Time.time + _addTime;
             }
 
-            if (IsFullCycleSpawned())
-            {
-                InvokeSpawnCyclePause();
-            }
+            if (IsFullCycleSpawned()) InvokeSpawnCyclePause();
         }
 
         private void InvokeSpawnCyclePause()
@@ -143,7 +141,7 @@ namespace Dodge.Core
         private void SpawnCubeMid()
         {
             var clone = Instantiate(cube, transform.position, cube.transform.rotation);
-            clone.velocity = transform.up * _speed;                                                                           
+            clone.velocity = transform.up * _speed;
         }
 
         private void SpawnBigCubeMid()
@@ -155,28 +153,32 @@ namespace Dodge.Core
         private void SpawnCubeLeft()
         {
             var spawnerPosition = transform.position;
-            var clone = Instantiate(cube, new Vector3(spawnerPosition.x - _offset, spawnerPosition.y), cube.transform.rotation);
+            var clone = Instantiate(cube, new Vector3(spawnerPosition.x - _offset, spawnerPosition.y),
+                cube.transform.rotation);
             clone.velocity = transform.up * _speed;
         }
 
         private void SpawnCubeRight()
         {
             var spawnerPosition = transform.position;
-            var clone = Instantiate(cube, new Vector3(spawnerPosition.x + _offset, spawnerPosition.y), cube.transform.rotation);
+            var clone = Instantiate(cube, new Vector3(spawnerPosition.x + _offset, spawnerPosition.y),
+                cube.transform.rotation);
             clone.velocity = transform.up * _speed;
         }
 
         private void SpawnBigCubeRight()
         {
             var spawnerPosition = transform.position;
-            var clone = Instantiate(bigCube, new Vector3(spawnerPosition.x + _offset, spawnerPosition.y), cube.transform.rotation);
+            var clone = Instantiate(bigCube, new Vector3(spawnerPosition.x + _offset, spawnerPosition.y),
+                cube.transform.rotation);
             clone.velocity = transform.up * _speed;
         }
 
         private void SpawnBigCubeLeft()
         {
             var spawnerPosition = transform.position;
-            var clone = Instantiate(bigCube, new Vector3(spawnerPosition.x - _offset, spawnerPosition.y), cube.transform.rotation);
+            var clone = Instantiate(bigCube, new Vector3(spawnerPosition.x - _offset, spawnerPosition.y),
+                cube.transform.rotation);
             clone.velocity = transform.up * _speed;
         }
 
@@ -306,13 +308,8 @@ namespace Dodge.Core
         private void LoadTrailConfiguration()
         {
             if (PlayerPrefs.GetInt("TrailToggle", 0) == 0)
-            {
                 EnableTrail(true);
-            }
-            else if (PlayerPrefs.GetInt("TrailToggle", 0) == 1)
-            {
-                EnableTrail(false);
-            }
+            else if (PlayerPrefs.GetInt("TrailToggle", 0) == 1) EnableTrail(false);
         }
 
         private void EnableTrail(bool isActive)

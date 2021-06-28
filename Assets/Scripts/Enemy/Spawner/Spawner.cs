@@ -6,17 +6,17 @@ namespace Dodge.Enemy.Spawner
     {
         private IEnemyCreator _enemyCreator;
         private IEnemySpawnTimer _spawnTimer;
-        
+
         public void Start()
         {
             _enemyCreator = gameObject.GetComponent<IEnemyCreator>();
             _spawnTimer = gameObject.GetComponent<IEnemySpawnTimer>();
         }
-        
+
         public void Update()
         {
             if (!_spawnTimer.CanSpawn()) return;
-            
+
             _enemyCreator.Create();
             _spawnTimer.IncrementSpawnCount();
 
@@ -26,6 +26,7 @@ namespace Dodge.Enemy.Spawner
                 IncreaseDifficulty();
                 return;
             }
+
             _spawnTimer.InvokePause();
         }
 
