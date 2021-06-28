@@ -26,10 +26,10 @@ namespace Dodge.Theme
 
         #endregion
 
-        public Dodge.Theme.Theme currentTheme;
+        public Theme currentTheme;
 
-        private readonly Dictionary<string, Dodge.Theme.Theme> _themeDictionary =
-            new Dictionary<string, Dodge.Theme.Theme>();
+        private readonly Dictionary<string, Theme> _themeDictionary =
+            new Dictionary<string, Theme>();
 
         private string SelectedThemeName
         {
@@ -37,7 +37,7 @@ namespace Dodge.Theme
             set => PlayerPrefs.SetString("ThemeName", value);
         }
 
-        public new Camera camera;
+        public ThemeApplier themeApplier;
 
         public void Start()
         {
@@ -50,16 +50,14 @@ namespace Dodge.Theme
         {
             SelectTheme(themeName);
 
-            ApplyThemeToInstantiatedObjects();
-
-            ApplyThemeToBackground();
+            themeApplier.Apply(FindObjectsOfType<Themeable>(), currentTheme);
         }
 
         private void FindThemes()
         {
             if (_themeDictionary.Count == 0)
             {
-                var themes = Resources.LoadAll<Dodge.Theme.Theme>("Themes");
+                var themes = Resources.LoadAll<Theme>("Themes");
                 foreach (var theme in themes)
                 {
                     _themeDictionary.Add(theme.themeName, theme);
@@ -90,32 +88,12 @@ namespace Dodge.Theme
             return _themeDictionary.ContainsKey(themeName);
         }
 
-        private void ApplyThemeToInstantiatedObjects()
-        {
-            var themeableObjects = FindObjectsOfType<Themeable>();
-            foreach (var themeableObject in themeableObjects)
-            {
-                ApplyThemeToThemeable(themeableObject);
-            }
-        }
 
         public void ApplyThemeToThemeable(Themeable themeableObject)
         {
-            var themeMaterial = currentTheme.FindMaterialWithName(themeableObject.GetMaterialName());
-            if (themeMaterial != null)
-            {
-                themeableObject.SetMaterial(themeMaterial);
-            }
+            themeApplier.ApplyThemeToThemeable(themeableObject, currentTheme);
         }
 
-        private void ApplyThemeToBackground()
-        {
-            var themeMaterial = currentTheme.FindMaterialWithName("background");
-            if (themeMaterial != null)
-            {
-                camera.backgroundColor = themeMaterial.color;
-            }
-        }
 
         public string[] GetThemeNames()
         {

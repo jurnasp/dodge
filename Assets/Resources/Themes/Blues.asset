@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Blues
   m_EditorClassIdentifier: 
   materials:
-  - {fileID: 2100000, guid: 640ea058f8e2aa005b4c22bd10de2918, type: 2}
+  - {fileID: 2100000, guid: 697162b68195484c0847c469c84d7a4f, type: 2}
   - {fileID: 2100000, guid: 834cb9d770e6ab1abad59547212a691d, type: 2}
   - {fileID: 2100000, guid: 087a646e452d74ad5a706a3e739e11af, type: 2}
   - {fileID: 2100000, guid: c948c6160b8cc8223a39ac0045588148, type: 2}
