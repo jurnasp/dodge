@@ -11,6 +11,8 @@ namespace Dodge.Enemy.Spawner
         {
             _enemyCreator = gameObject.GetComponent<IEnemyCreator>();
             _spawnTimer = gameObject.GetComponent<IEnemySpawnTimer>();
+            
+            PlayerPrefs.SetInt("TotalTries", PlayerPrefs.GetInt("TotalTries", 0) + 1);
         }
 
         public void Update()
