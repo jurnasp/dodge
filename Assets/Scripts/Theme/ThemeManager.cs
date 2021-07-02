@@ -20,9 +20,7 @@ namespace Dodge.Theme
 
         public void Start()
         {
-            _themeDictionary = InitThemes();
-
-            ApplyTheme("Blues");
+            _themeDictionary = GetThemes();
         }
 
         private static Dictionary<string, Theme> InitThemes()
@@ -69,6 +67,17 @@ namespace Dodge.Theme
         public string[] GetThemeNames()
         {
             return _themeDictionary.Keys.ToArray();
+        }
+        
+        public Dictionary<string, Theme> GetThemes()
+        {
+            if (_themeDictionary == null)
+            {
+                var themes = Resources.LoadAll<Theme>("Themes");
+                _themeDictionary = themes.ToDictionary(theme => theme.themeName);
+            }
+
+            return _themeDictionary;
         }
 
         #region Singleton
