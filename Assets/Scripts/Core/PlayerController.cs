@@ -5,43 +5,42 @@ namespace Dodge.Core
 {
     public class PlayerController : MonoBehaviour
     {
-        public GameObject playerCubeLeft;
-        public GameObject playerCubeRight;
+        public GameObject leftPlayerCube;
+        public GameObject rightPlayerCube;
 
         public InputManager input;
 
         public float speed = 50f;
-        public float border = 5.2f;
+        public float gap = 5.2f;
         private float _leftCubeStartX;
         private float _rightCubeStartX;
 
         private void Start()
         {
-            _leftCubeStartX = playerCubeLeft.transform.position.x;
-            _rightCubeStartX = playerCubeRight.transform.position.x;
+            _leftCubeStartX = leftPlayerCube.transform.position.x;
+            _rightCubeStartX = rightPlayerCube.transform.position.x;
         }
 
         private void Update()
         {
-            if (input.RightPressed && input.LeftPressed)
+            switch (LeftPressed: input.IsLeftPressed, RightPressed: input.IsRightPressed)
             {
-                playerCubeRight.transform.position = MoveTo(playerCubeRight, _rightCubeStartX + border);
-                playerCubeLeft.transform.position = MoveTo(playerCubeLeft, _leftCubeStartX - border);
-            }
-            else if (input.RightPressed)
-            {
-                playerCubeRight.transform.position = MoveTo(playerCubeRight, _rightCubeStartX + border);
-                playerCubeLeft.transform.position = MoveTo(playerCubeLeft, _leftCubeStartX + border);
-            }
-            else if (input.LeftPressed)
-            {
-                playerCubeRight.transform.position = MoveTo(playerCubeRight, _rightCubeStartX - border);
-                playerCubeLeft.transform.position = MoveTo(playerCubeLeft, _leftCubeStartX - border);
-            }
-            else
-            {
-                playerCubeRight.transform.position = MoveTo(playerCubeRight, _rightCubeStartX);
-                playerCubeLeft.transform.position = MoveTo(playerCubeLeft, _leftCubeStartX);
+                case (true, true):
+                    rightPlayerCube.transform.position = MoveTo(rightPlayerCube, _rightCubeStartX + gap);
+                    leftPlayerCube.transform.position = MoveTo(leftPlayerCube, _leftCubeStartX - gap);
+                    break;
+                case (true, false):
+                    rightPlayerCube.transform.position = MoveTo(rightPlayerCube, _rightCubeStartX - gap);
+                    leftPlayerCube.transform.position = MoveTo(leftPlayerCube, _leftCubeStartX - gap);
+                    break;
+                case (false, true):
+                    rightPlayerCube.transform.position = MoveTo(rightPlayerCube, _rightCubeStartX + gap);
+                    leftPlayerCube.transform.position = MoveTo(leftPlayerCube, _leftCubeStartX + gap);
+                    break;
+                case (false, false):
+                    rightPlayerCube.transform.position = MoveTo(rightPlayerCube, _rightCubeStartX);
+                    leftPlayerCube.transform.position = MoveTo(leftPlayerCube, _leftCubeStartX);
+                    break;
             }
         }
 

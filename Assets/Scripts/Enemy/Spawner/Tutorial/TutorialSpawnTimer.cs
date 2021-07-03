@@ -55,7 +55,7 @@ namespace Dodge.Enemy.Spawner.Tutorial
 
         private bool InputHeld(bool left, bool right)
         {
-            if (inputManager.LeftPressed == left && inputManager.RightPressed == right)
+            if (inputManager.IsLeftPressed == left && inputManager.IsRightPressed == right)
             {
                 if (_keyHeldTime == null)
                     _keyHeldTime = Time.time + 3f;

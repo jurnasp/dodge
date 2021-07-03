@@ -4,9 +4,9 @@ namespace Dodge.Core
 {
     public class InputManager : MonoBehaviour
     {
-        public bool LeftPressed { get; private set; }
+        public bool IsLeftPressed { get; private set; }
 
-        public bool RightPressed { get; private set; }
+        public bool IsRightPressed { get; private set; }
 
         private void Update()
         {
@@ -15,22 +15,22 @@ namespace Dodge.Core
 
         public void OnLeftButtonDown()
         {
-            LeftPressed = true;
+            IsLeftPressed = true;
         }
 
         public void OnLeftButtonUp()
         {
-            LeftPressed = false;
+            IsLeftPressed = false;
         }
 
         public void OnRightButtonDown()
         {
-            RightPressed = true;
+            IsRightPressed = true;
         }
 
         public void OnRightButtonUp()
         {
-            RightPressed = false;
+            IsRightPressed = false;
         }
 
         private void ArrowControls()
