@@ -20,7 +20,7 @@ namespace Dodge.Theme
 
         public void ApplyThemeToThemeable(Themeable themeableObject, Theme currentTheme)
         {
-            var themeMaterial = currentTheme.FindMaterialWithName(themeableObject.GetMaterialName());
+            var themeMaterial = currentTheme.FindMaterialWithName(themeableObject.GetCurrentMaterialName());
             if (themeMaterial != null) themeableObject.SetMaterial(themeMaterial);
         }
 

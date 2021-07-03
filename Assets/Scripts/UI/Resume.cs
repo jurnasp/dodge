@@ -5,27 +5,20 @@ namespace Dodge.UI
 {
     public class Resume : MonoBehaviour
     {
-        public GameObject resumePanel;
-        public GameObject pauseButton;
-
-        public void PauseButtonPress()
+        public void PauseTime()
         {
             Time.timeScale = 0;
-            pauseButton.SetActive(false);
-            resumePanel.SetActive(true);
         }
 
-        public void ResumeButtonPress()
+        public void ResumeTime()
         {
             Time.timeScale = 1;
-            pauseButton.SetActive(true);
-            resumePanel.SetActive(false);
         }
 
         public void BackToMenu()
         {
             SceneManager.LoadScene(0);
-            Time.timeScale = 1;
+            ResumeTime();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Dodge.Library.Game;
+﻿using Library.Game;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,7 +18,7 @@ namespace Dodge.Game
             _limitedQueue = new LimitedQueue<int>(BufferSize);
         }
 
-        public void OnTriggerExit(Collider other)
+        private void OnTriggerExit(Collider other)
         {
             var instanceID = GetParentInstanceID(other);
             if (!IsEnemy(other) || _limitedQueue.Contains(instanceID) || !UnderTrigger(other)) return;

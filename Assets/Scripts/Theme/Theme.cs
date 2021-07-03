@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Dodge.Core;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -16,7 +17,7 @@ namespace Dodge.Theme
 
         public bool IsUnlocked()
         {
-            return PlayerPrefs.GetInt("TotalScore") >= scoreToUnlock;
+            return PlayerConfig.GetTotalScore() >= scoreToUnlock;
         }
 
         [CanBeNull]

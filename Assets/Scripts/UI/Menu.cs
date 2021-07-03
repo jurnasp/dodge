@@ -1,4 +1,5 @@
 ﻿using System;
+using Dodge.Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -15,23 +16,22 @@ namespace Dodge.UI
         public Text trails;
         public Text tutorial;
 
-
         public void Start()
         {
-            var avgScore = (float) PlayerPrefs.GetInt("TotalScore", 0) / PlayerPrefs.GetInt("TotalTries", 0);
-            totalTries.text = "Tries : " + PlayerPrefs.GetInt("TotalTries", 0);
-            totalScore.text = "Total score : " + PlayerPrefs.GetInt("TotalScore", 0);
-            highScore.text = "High score : " + PlayerPrefs.GetInt("HighScoreEasy", 0) + ", " +
-                             PlayerPrefs.GetInt("HighScoreNormal") + ", " + PlayerPrefs.GetInt("HighScoreHard");
-            averageScore.text = "Average score : " + Math.Round(avgScore, 2);
+            var avgScore = (float) PlayerConfig.GetTotalScore() / PlayerConfig.GetTotalGamesPlayed();
 
-            if (PlayerPrefs.GetInt("TrailToggle", 0) == 1)
-                trails.text = "OFF";
-            else if (PlayerPrefs.GetInt("TrailToggle", 0) == 0) trails.text = "ON";
+            totalTries.text = "Tries : " + PlayerConfig.GetTotalGamesPlayed();
+            totalScore.text = "Total score : " + PlayerConfig.GetTotalScore();
+            highScore.text = "High score : " + PlayerConfig.GetHighScore();
+            averageScore.text = "Average score : " + RoundScore(avgScore);
 
-            if (PlayerPrefs.GetInt("TutorialToggle", 0) == 1)
-                tutorial.text = "ON";
-            else if (PlayerPrefs.GetInt("TutorialToggle", 0) == 0) tutorial.text = "OFF";
+            RefreshIsTrailEnabledButtonText();
+            RefreshIsTutorialEnabledButtonText();
+        }
+
+        private static double RoundScore(float avgScore)
+        {
+            return Math.Round(avgScore, 2);
         }
 
         public void ToGame()
@@ -41,30 +41,26 @@ namespace Dodge.UI
 
         public void TrailsToggle()
         {
-            if (PlayerPrefs.GetInt("TrailToggle", 0) == 1)
-            {
-                PlayerPrefs.SetInt("TrailToggle", 0);
-                trails.text = "ON";
-            }
-            else if (PlayerPrefs.GetInt("TrailToggle", 0) == 0)
-            {
-                PlayerPrefs.SetInt("TrailToggle", 1);
-                trails.text = "OFF";
-            }
+            PlayerConfig.SetIsTrailEnabled(!PlayerConfig.GetIsTutorialEnabled());
+
+            RefreshIsTrailEnabledButtonText();
+        }
+
+        private void RefreshIsTrailEnabledButtonText()
+        {
+            trails.text = PlayerConfig.GetIsTrailEnabled() ? "OFF" : "ON";
         }
 
         public void TutorialToggle()
         {
-            if (PlayerPrefs.GetInt("TutorialToggle", 0) == 1)
-            {
-                PlayerPrefs.SetInt("TutorialToggle", 0);
-                tutorial.text = "OFF";
-            }
-            else if (PlayerPrefs.GetInt("TutorialToggle", 0) == 0)
-            {
-                PlayerPrefs.SetInt("TutorialToggle", 1);
-                tutorial.text = "ON";
-            }
+            PlayerConfig.SetIsTutorialEnabled(!PlayerConfig.GetIsTutorialEnabled());
+
+            RefreshIsTutorialEnabledButtonText();
+        }
+
+        private void RefreshIsTutorialEnabledButtonText()
+        {
+            tutorial.text = PlayerConfig.GetIsTutorialEnabled() ? "ON" : "OFF";
         }
     }
 }

@@ -15,13 +15,13 @@ namespace Dodge.Core
         private float _leftCubeStartX;
         private float _rightCubeStartX;
 
-        public void Awake()
+        private void Start()
         {
             _leftCubeStartX = playerCubeLeft.transform.position.x;
             _rightCubeStartX = playerCubeRight.transform.position.x;
         }
 
-        public void Update()
+        private void Update()
         {
             if (input.RightPressed && input.LeftPressed)
             {

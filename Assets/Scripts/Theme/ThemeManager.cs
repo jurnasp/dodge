@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Dodge.Core;
 using UnityEngine;
 
 namespace Dodge.Theme
@@ -14,19 +15,24 @@ namespace Dodge.Theme
 
         private string SelectedThemeName
         {
-            get => PlayerPrefs.GetString("ThemeName", "Default");
-            set => PlayerPrefs.SetString("ThemeName", value);
+            get => PlayerConfig.GetCurrentTheme();
+            set => PlayerConfig.SetCurrentTheme(value);
         }
 
-        public void Start()
+        private void Start()
         {
             _themeDictionary = GetThemes();
         }
 
-        private static Dictionary<string, Theme> InitThemes()
+        public Dictionary<string, Theme> GetThemes()
         {
-            var themes = Resources.LoadAll<Theme>("Themes");
-            return themes.ToDictionary(theme => theme.themeName);
+            if (_themeDictionary == null)
+            {
+                var themes = Resources.LoadAll<Theme>("Themes");
+                _themeDictionary = themes.ToDictionary(theme => theme.themeName);
+            }
+
+            return _themeDictionary;
         }
 
         public void ApplyTheme(string themeName)
@@ -67,17 +73,6 @@ namespace Dodge.Theme
         public string[] GetThemeNames()
         {
             return _themeDictionary.Keys.ToArray();
-        }
-        
-        public Dictionary<string, Theme> GetThemes()
-        {
-            if (_themeDictionary == null)
-            {
-                var themes = Resources.LoadAll<Theme>("Themes");
-                _themeDictionary = themes.ToDictionary(theme => theme.themeName);
-            }
-
-            return _themeDictionary;
         }
 
         #region Singleton

@@ -4,7 +4,7 @@ namespace Dodge.Enemy.Destruction
 {
     public class NotifyParentOutOfCamera : MonoBehaviourParentMessenger
     {
-        public void OnBecameInvisible()
+        private void OnBecameInvisible()
         {
             NotifyParentsOfEvent("OnBecameInvisible");
         }

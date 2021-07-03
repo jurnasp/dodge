@@ -8,7 +8,7 @@ namespace Dodge.UI
         public void Setup(Theme.Theme theme)
         {
             gameObject.name = theme.themeName;
-            
+
             var text = GetComponentInChildren<Text>();
             text.text = theme.themeName;
         }

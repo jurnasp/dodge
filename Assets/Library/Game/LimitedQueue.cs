@@ -1,18 +1,19 @@
 using System.Collections.Generic;
 
-namespace Dodge.Library.Game
+namespace Library.Game
 {
     public class LimitedQueue<T>
     {
         private readonly Queue<T> _bufferStack;
         private readonly int _size;
-        public int Count => _bufferStack.Count;
-        
+
         public LimitedQueue(int size)
         {
             _size = size;
             _bufferStack = new Queue<T>(_size);
         }
+
+        public int Count => _bufferStack.Count;
 
         public bool Contains(T value)
         {
@@ -23,7 +24,7 @@ namespace Dodge.Library.Game
         {
             if (_bufferStack.Count > _size - 1)
                 _bufferStack.Dequeue();
-                
+
             _bufferStack.Enqueue(value);
         }
     }

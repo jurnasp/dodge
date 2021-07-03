@@ -13,10 +13,9 @@ namespace Dodge.Enemy.Spawner
 
         public float enemySpeed = 15f;
 
-
         private Random _random;
 
-        public void Start()
+        private void Start()
         {
             _random = new Random();
         }

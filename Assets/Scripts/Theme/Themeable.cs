@@ -6,7 +6,7 @@ namespace Dodge.Theme
     {
         private MeshRenderer MeshRenderer => gameObject.GetComponent<MeshRenderer>();
 
-        public void Start()
+        private void Start()
         {
             if (MeshRenderer == null)
                 Debug.LogError(
@@ -15,7 +15,7 @@ namespace Dodge.Theme
             ThemeManager.Instance.ApplyThemeToThemeable(this);
         }
 
-        public string GetMaterialName()
+        public string GetCurrentMaterialName()
         {
             return MeshRenderer.material.name.Replace("(Instance)", "").Trim();
         }

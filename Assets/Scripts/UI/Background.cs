@@ -13,21 +13,20 @@ namespace Dodge.UI
         public float destroyTime = 4f;
         public float range = 5f;
 
-        public void Update()
+        private void Update()
         {
-            if (startTime < Time.time)
-            {
-                startTime = Time.time;
-                var clone = Instantiate(cube,
-                    new Vector3(transform.position.x + posX, transform.position.y, transform.position.z),
-                    Random.rotation);
-                clone.velocity =
-                    (new Vector3(clone.transform.position.x, clone.transform.position.y - targetY,
-                        clone.transform.position.z) - clone.transform.position) * speed;
-                posX = Random.Range(-range, range);
-                startTime = Time.time + addTime;
-                Destroy(clone.gameObject, destroyTime);
-            }
+            if (!(startTime < Time.time)) return;
+
+            startTime = Time.time;
+            var clone = Instantiate(cube,
+                new Vector3(transform.position.x + posX, transform.position.y, transform.position.z),
+                Random.rotation);
+            clone.velocity =
+                (new Vector3(clone.transform.position.x, clone.transform.position.y - targetY,
+                    clone.transform.position.z) - clone.transform.position) * speed;
+            posX = Random.Range(-range, range);
+            startTime = Time.time + addTime;
+            Destroy(clone.gameObject, destroyTime);
         }
     }
 }

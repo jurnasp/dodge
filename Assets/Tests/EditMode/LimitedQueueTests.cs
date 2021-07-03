@@ -1,4 +1,5 @@
-using Dodge.Library.Game;
+using System;
+using Library.Game;
 using NUnit.Framework;
 
 namespace Tests.EditMode
@@ -16,7 +17,7 @@ namespace Tests.EditMode
         [Test]
         public void Test_WithNegativeSize_ThrowsArgumentOutOfRangeException()
         {
-            var ex = Assert.Throws<System.ArgumentOutOfRangeException>(
+            var ex = Assert.Throws<ArgumentOutOfRangeException>(
                 delegate { new LimitedQueue<int>(-1); }
             );
             Assert.That(ex.Message, Does.Contain("Non-negative number required."));
@@ -27,41 +28,38 @@ namespace Tests.EditMode
         {
             var limitedStack = new LimitedQueue<int>(2);
 
-            for (int i = 0; i < 3; i++)
-            {
-                limitedStack.Push(i);
-            }
+            for (var i = 0; i < 3; i++) limitedStack.Push(i);
 
             Assert.AreEqual(2, limitedStack.Count);
         }
-        
+
         [Test]
         public void Test_AddOne_ContainsOneReturnsTrue()
         {
             var limitedStack = new LimitedQueue<int>(5);
-            
+
             limitedStack.Push(1);
 
             Assert.IsTrue(limitedStack.Contains(1));
         }
-        
+
         [Test]
         public void Test_InitializeWithSizeTwo_PushTwo_ContainsBothPushed()
         {
             var limitedStack = new LimitedQueue<int>(2);
-            
+
             limitedStack.Push(1);
             limitedStack.Push(2);
 
             Assert.IsTrue(limitedStack.Contains(1));
             Assert.IsTrue(limitedStack.Contains(2));
         }
-        
+
         [Test]
         public void Test_InitializeWithSizeTwo_PushThree_DoesNotContainFirstPushed()
         {
             var limitedStack = new LimitedQueue<int>(2);
-            
+
             limitedStack.Push(1);
             limitedStack.Push(2);
             limitedStack.Push(3);

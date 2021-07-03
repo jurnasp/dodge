@@ -403,10 +403,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 957552859}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: BackToMenu
-        m_Mode: 1
+      - m_Target: {fileID: 658820472}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1959447119}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -468,7 +480,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &260439068
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1221,17 +1233,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d04e5f1a46d6084ab122a2fce449a87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trail: {fileID: 1823579202914796, guid: 36cae195915f1a443b22b9a9e64ae05a, type: 3}
-  statisticsMenu: {fileID: 1959447119}
-  settingsMenu: {fileID: 168322128}
-  menuPanel: {fileID: 658820472}
   totalTries: {fileID: 1817243938}
   totalScore: {fileID: 96171808}
   highScore: {fileID: 631573219}
   averageScore: {fileID: 1764295665}
   trails: {fileID: 1261226402}
   tutorial: {fileID: 1710560436}
-  difficulty: {fileID: 1991111611}
 --- !u!1 &962685230
 GameObject:
   m_ObjectHideFlags: 0
@@ -2546,6 +2553,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 658820472}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 168322128}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1862857710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2797,10 +2828,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 957552859}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: BackToMenu
-        m_Mode: 1
+      - m_Target: {fileID: 658820472}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 168322128}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

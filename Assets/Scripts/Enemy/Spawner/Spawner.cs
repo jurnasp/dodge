@@ -1,3 +1,4 @@
+using Dodge.Core;
 using UnityEngine;
 
 namespace Dodge.Enemy.Spawner
@@ -7,15 +8,18 @@ namespace Dodge.Enemy.Spawner
         private IEnemyCreator _enemyCreator;
         private IEnemySpawnTimer _spawnTimer;
 
-        public void Start()
+        private void Awake()
         {
             _enemyCreator = gameObject.GetComponent<IEnemyCreator>();
             _spawnTimer = gameObject.GetComponent<IEnemySpawnTimer>();
-            
-            PlayerPrefs.SetInt("TotalTries", PlayerPrefs.GetInt("TotalTries", 0) + 1);
         }
 
-        public void Update()
+        private void Start()
+        {
+            PlayerConfig.IncrementTotalGamesPlayed();
+        }
+
+        private void Update()
         {
             if (!_spawnTimer.CanSpawn()) return;
 

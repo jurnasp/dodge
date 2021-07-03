@@ -40,21 +40,7 @@ namespace Dodge.Core
         public GameObject tutorialSplitText;
         public GameObject tutorialLostPanel;
         public GameObject tutorialLostPanelEasy;
-        private float _addTime;
-        private float _holdTimer;
-        private LoseTrigger _leftFreeze;
         private readonly float _offset = 6.6f;
-        private float _pause = 2.5f;
-        private float _pauseTimer;
-        private LoseTrigger _rightFreeze;
-        private ScoreAdd _scoreRead;
-
-        private CountScore _spawnCount;
-        private float _speed;
-
-        private bool _stop;
-
-        private float _timer;
 
         private readonly float addTimeEasy = 1.75f;
         private readonly float addTimeHard = 1.25f;
@@ -73,25 +59,42 @@ namespace Dodge.Core
         private readonly float speedHard = -15f;
 
         private readonly float speedNormal = -12f;
+        private float _addTime;
+        private float _holdTimer;
+        private LoseTrigger _leftFreeze;
+        private float _pause = 2.5f;
+        private float _pauseTimer;
+        private LoseTrigger _rightFreeze;
+        private ScoreAdd _scoreRead;
+
+        private CountScore _spawnCount;
+        private float _speed;
+
+        private bool _stop;
+
+        private float _timer;
         // private float _delay = 2f;
         // private float _delayTwo = 3.5f;
 
-        public void Start()
+        private void Awake()
         {
-            _timer = Time.time;
-            timeAdd = 0.10f;
-
             _scoreRead = scoreAdder.GetComponent<ScoreAdd>();
             _spawnCount = scoreCounter.GetComponent<CountScore>();
             _leftFreeze = left.GetComponent<LoseTrigger>();
             _rightFreeze = right.GetComponent<LoseTrigger>();
             // _buttonIsPressed = left.GetComponent<ControlLeft>();
+        }
+
+        private void Start()
+        {
+            _timer = Time.time;
+            timeAdd = 0.10f;
 
             LoadDifficultyConfigurations();
             LoadTrailConfiguration();
         }
 
-        public void Update()
+        private void Update()
         {
             if (!IsTutorialEnabled())
             {

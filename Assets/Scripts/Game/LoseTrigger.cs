@@ -9,12 +9,12 @@ namespace Dodge.Game
         public GameObject startTrigger;
         private Obstacles _obstacles;
 
-        private void Start()
+        private void Awake()
         {
             _obstacles = startTrigger.GetComponent<Obstacles>();
         }
 
-        public void Update()
+        private void Update()
         {
             if (!_obstacles) lost = false;
         }

@@ -8,8 +8,8 @@ namespace Dodge.UI
     {
         public GameObject themeButton;
         public ThemeManager themeManager;
-        
-        public void Start()
+
+        private void Start()
         {
             Populate();
         }
@@ -21,12 +21,9 @@ namespace Dodge.UI
             foreach (var theme in themes.Values)
             {
                 var go = Instantiate(themeButton, transform, false);
-                
+
                 var tbp = go.GetComponentInChildren<ThemeButtonPopulate>();
-                if (tbp != null)
-                {
-                    tbp.Setup(theme);
-                }
+                if (tbp != null) tbp.Setup(theme);
 
                 go.GetComponentInChildren<Button>().onClick.AddListener(delegate
                 {

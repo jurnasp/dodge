@@ -12,7 +12,7 @@ namespace Dodge.Enemy.Spawner.Tutorial
         private TutorialEnemyToPanel _currentEnemyToPanel;
         private int _index;
 
-        public void Start()
+        private void Start()
         {
             ShowPanelAndPrepareEnemy();
         }

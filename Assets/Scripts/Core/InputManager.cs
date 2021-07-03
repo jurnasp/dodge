@@ -8,7 +8,7 @@ namespace Dodge.Core
 
         public bool RightPressed { get; private set; }
 
-        public void Update()
+        private void Update()
         {
             ArrowControls();
         }
