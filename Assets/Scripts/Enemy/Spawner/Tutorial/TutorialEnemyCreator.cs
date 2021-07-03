@@ -1,4 +1,5 @@
 using System;
+using Dodge.Library.Enemy.Spawner;
 using UnityEngine;
 
 namespace Dodge.Enemy.Spawner.Tutorial
