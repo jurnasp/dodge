@@ -2652,11 +2652,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469e1520bcfdb0641ab4065643f3be20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCubeLeft: {fileID: 1396896761}
-  playerCubeRight: {fileID: 2023607995}
+  leftPlayerCube: {fileID: 1396896761}
+  rightPlayerCube: {fileID: 2023607995}
   input: {fileID: 490300684}
   speed: 40
-  border: 4.5
+  gap: 5.2
 --- !u!1 &1350165946
 GameObject:
   m_ObjectHideFlags: 0

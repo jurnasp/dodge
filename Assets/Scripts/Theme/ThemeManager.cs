@@ -29,10 +29,18 @@ namespace Dodge.Theme
             if (_themeDictionary == null)
             {
                 var themes = Resources.LoadAll<Theme>("Themes");
-                _themeDictionary = themes.ToDictionary(theme => theme.themeName);
+                _themeDictionary = themes.OrderBy(x => x.scoreToUnlock).ToDictionary(theme => theme.themeName);
             }
 
             return _themeDictionary;
+        }
+
+        public List<Theme> GetSortedThemes()
+        {
+            var themeList = _themeDictionary.Values.ToList();
+            themeList.Sort((x, y) => x.scoreToUnlock.CompareTo(y.scoreToUnlock));
+            
+            return themeList;
         }
 
         public void ApplyTheme(string themeName)
