@@ -11,7 +11,7 @@ namespace Dodge.Core
         public InputManager input;
 
         public float speed = 50f;
-        public float gap = 5.2f;
+        public float edge = 5.2f;
         private float _leftCubeStartX;
         private float _rightCubeStartX;
 
@@ -26,16 +26,16 @@ namespace Dodge.Core
             switch (LeftPressed: input.IsLeftPressed, RightPressed: input.IsRightPressed)
             {
                 case (true, true):
-                    rightPlayerCube.transform.position = MoveTo(rightPlayerCube, _rightCubeStartX + gap);
-                    leftPlayerCube.transform.position = MoveTo(leftPlayerCube, _leftCubeStartX - gap);
+                    rightPlayerCube.transform.position = MoveTo(rightPlayerCube, _rightCubeStartX + edge);
+                    leftPlayerCube.transform.position = MoveTo(leftPlayerCube, _leftCubeStartX - edge);
                     break;
                 case (true, false):
-                    rightPlayerCube.transform.position = MoveTo(rightPlayerCube, _rightCubeStartX - gap);
-                    leftPlayerCube.transform.position = MoveTo(leftPlayerCube, _leftCubeStartX - gap);
+                    rightPlayerCube.transform.position = MoveTo(rightPlayerCube, _rightCubeStartX - edge);
+                    leftPlayerCube.transform.position = MoveTo(leftPlayerCube, _leftCubeStartX - edge);
                     break;
                 case (false, true):
-                    rightPlayerCube.transform.position = MoveTo(rightPlayerCube, _rightCubeStartX + gap);
-                    leftPlayerCube.transform.position = MoveTo(leftPlayerCube, _leftCubeStartX + gap);
+                    rightPlayerCube.transform.position = MoveTo(rightPlayerCube, _rightCubeStartX + edge);
+                    leftPlayerCube.transform.position = MoveTo(leftPlayerCube, _leftCubeStartX + edge);
                     break;
                 case (false, false):
                     rightPlayerCube.transform.position = MoveTo(rightPlayerCube, _rightCubeStartX);

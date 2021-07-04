@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e6f9ad04dd643f0944f129582f71b02, type: 3}
-  m_Name: Blues
+  m_Name: Neon
   m_EditorClassIdentifier: 
   materials:
-  - {fileID: 2100000, guid: 697162b68195484c0847c469c84d7a4f, type: 2}
-  - {fileID: 2100000, guid: 834cb9d770e6ab1abad59547212a691d, type: 2}
-  - {fileID: 2100000, guid: 087a646e452d74ad5a706a3e739e11af, type: 2}
-  - {fileID: 2100000, guid: c948c6160b8cc8223a39ac0045588148, type: 2}
-  themeName: Blues
-  scoreToUnlock: 5
+  - {fileID: 2100000, guid: aec897c575a863f948a182317fca868a, type: 2}
+  - {fileID: 2100000, guid: bbb3d0b41b7e8e3c79b0caba3290df45, type: 2}
+  - {fileID: 2100000, guid: ca6ff5ce2351e37bf9abb0de7d4f2997, type: 2}
+  - {fileID: 2100000, guid: b018cf0326c26c0c0b3f349c55c20264, type: 2}
+  themeName: Neon
+  scoreToUnlock: 7

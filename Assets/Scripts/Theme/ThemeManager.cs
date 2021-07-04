@@ -22,6 +22,8 @@ namespace Dodge.Theme
         private void Start()
         {
             _themeDictionary = GetThemes();
+            
+            ApplyTheme(SelectedThemeName);
         }
 
         public Dictionary<string, Theme> GetThemes()
