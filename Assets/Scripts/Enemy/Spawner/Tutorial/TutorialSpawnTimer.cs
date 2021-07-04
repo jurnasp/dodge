@@ -16,6 +16,8 @@ namespace Dodge.Enemy.Spawner.Tutorial
         private float? _keyHeldTime;
         private int _spawnCount;
 
+        private bool _gameEnd;
+
         public bool CanSpawn()
         {
             if (IsEnemySpawnTimeout()) return false;
@@ -50,8 +52,13 @@ namespace Dodge.Enemy.Spawner.Tutorial
 
         public bool HasSpawnedEnoughEnemiesForLongPause()
         {
-            // @Todo dependant on if lost or not
-            return true;
+            if (_gameEnd) _gameEnd = false;
+            return _gameEnd;
+        }
+
+        public void OnGameEnd()
+        {
+            _gameEnd = true;
         }
 
         private bool InputHeld(bool left, bool right)

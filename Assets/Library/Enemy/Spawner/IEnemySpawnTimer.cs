@@ -12,5 +12,7 @@ namespace Dodge.Library.Enemy.Spawner
         void IncrementSpawnCount();
 
         bool HasSpawnedEnoughEnemiesForLongPause();
+
+        void OnGameEnd();
     }
 }

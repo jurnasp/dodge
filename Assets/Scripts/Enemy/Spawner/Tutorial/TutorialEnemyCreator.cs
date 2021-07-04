@@ -34,6 +34,8 @@ namespace Dodge.Enemy.Spawner.Tutorial
             ShowPanelAndPrepareEnemy();
         }
 
+        public void OnGameEnd() { }
+
         private GameObject GetCurrentEnemyPrefab()
         {
             return _currentEnemyToPanel.tutorialPrefab;

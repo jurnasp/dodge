@@ -35,5 +35,11 @@ namespace Library.Enemy.Spawner
             _spawnTimer.IncreaseDifficulty();
             _enemyCreator.IncreaseDifficulty();
         }
+
+        public void EndGame()
+        {
+            _spawnTimer.OnGameEnd();
+            _enemyCreator.OnGameEnd();
+        }
     }
 }

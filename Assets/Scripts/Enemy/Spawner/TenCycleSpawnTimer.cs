@@ -14,11 +14,13 @@ namespace Dodge.Enemy.Spawner
 
         private int _spawnCount;
         private float _spawnCyclePauseEnd;
+        
+        private bool _gameEnd;
 
 
         public bool CanSpawn()
         {
-            return !IsSpawnCyclePause() && !IsEnemySpawnTimeout();
+            return !IsSpawnCyclePause() && !IsEnemySpawnTimeout() && !_gameEnd;
         }
 
         public void IncreaseDifficulty()
@@ -44,6 +46,11 @@ namespace Dodge.Enemy.Spawner
         public bool HasSpawnedEnoughEnemiesForLongPause()
         {
             return _spawnCount % SpawnCycleSize == 0;
+        }
+
+        public void OnGameEnd()
+        {
+            _gameEnd = true;
         }
 
         private bool IsSpawnCyclePause()

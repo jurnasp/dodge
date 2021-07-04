@@ -16,6 +16,8 @@ namespace Dodge.Enemy.Spawner
 
         private Random _random;
 
+        private bool _gameEnd;
+
         private void Start()
         {
             _random = new Random();
@@ -23,6 +25,8 @@ namespace Dodge.Enemy.Spawner
 
         public void Create()
         {
+            if (_gameEnd) return;
+            
             var enemy = Instantiate(GetRandomEnemyPrefab());
 
             enemy.transform.position += transform.position;
@@ -31,7 +35,14 @@ namespace Dodge.Enemy.Spawner
 
         public void IncreaseDifficulty()
         {
+            if (_gameEnd) return;
+            
             enemySpeed += EnemySpeedAdd;
+        }
+
+        public void OnGameEnd()
+        {
+            _gameEnd = true;
         }
 
         private GameObject GetRandomEnemyPrefab()

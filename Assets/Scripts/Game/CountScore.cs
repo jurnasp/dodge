@@ -1,4 +1,5 @@
-﻿using Library.Game;
+﻿using Dodge.Core;
+using Library.Game;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ namespace Dodge.Game
         public Text highScoreText;
 
         private LimitedQueue<int> _limitedQueue;
+        private bool _gameEnd;
         public int Score { get; private set; }
 
         private void Start()
@@ -21,7 +23,7 @@ namespace Dodge.Game
         private void OnTriggerExit(Collider other)
         {
             var instanceID = GetParentInstanceID(other);
-            if (!IsEnemy(other) || _limitedQueue.Contains(instanceID) || !UnderTrigger(other)) return;
+            if (_gameEnd || !IsEnemy(other) || _limitedQueue.Contains(instanceID) || !UnderTrigger(other)) return;
 
             _limitedQueue.Push(instanceID);
 
@@ -51,6 +53,18 @@ namespace Dodge.Game
             }
 
             return result;
+        }
+
+        public void OnGameEnd()
+        {
+            _gameEnd = true;
+            TryUpdateHighScore();
+        }
+
+        private void TryUpdateHighScore()
+        {
+            if (Score > PlayerConfig.GetHighScore())
+                PlayerConfig.SetHighScore(Score);
         }
     }
 }
