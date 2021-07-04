@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6f9ad04dd643f0944f129582f71b02, type: 3}
+  m_Name: Rusty
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 2100000, guid: b32114ee0c240e075836dfea4157041f, type: 2}
+  - {fileID: 2100000, guid: 4e0a4f431f9d77041b183e09da0da604, type: 2}
+  - {fileID: 2100000, guid: d5875c4ad5a52682bb979e6d64741547, type: 2}
+  - {fileID: 2100000, guid: 745a6167bebaa2580bc31e6283a0dd6a, type: 2}
+  themeName: Rusty
+  scoreToUnlock: 7
