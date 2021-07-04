@@ -28,7 +28,7 @@ namespace Dodge.Enemy.Spawner
             _spawner.EvaluateSpawningAnEnemy();
         }
 
-        public void OnGameEnd()
+        public void StopSpawning()
         {
             _spawner.EndGame();
         }

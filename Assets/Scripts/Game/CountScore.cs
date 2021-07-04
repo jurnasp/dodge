@@ -55,13 +55,12 @@ namespace Dodge.Game
             return result;
         }
 
-        public void OnGameEnd()
+        public void StopCountingScore()
         {
             _gameEnd = true;
-            TryUpdateHighScore();
         }
 
-        private void TryUpdateHighScore()
+        public void TryUpdateHighScore()
         {
             if (Score > PlayerConfig.GetHighScore())
                 PlayerConfig.SetHighScore(Score);
