@@ -12,6 +12,7 @@ namespace Dodge.Enemy.Spawner.Tutorial
 
         private TutorialEnemyToPanel _currentEnemyToPanel;
         private int _index;
+        private int _spawnCount;
 
         private void Start()
         {
@@ -24,6 +25,8 @@ namespace Dodge.Enemy.Spawner.Tutorial
 
             enemy.transform.position += transform.position;
             enemy.GetComponent<EnemyMove>().speed = tutorialEnemySpeed;
+
+            _spawnCount++;
         }
 
         public void IncreaseDifficulty()
@@ -34,7 +37,14 @@ namespace Dodge.Enemy.Spawner.Tutorial
             ShowPanelAndPrepareEnemy();
         }
 
-        public void OnGameEnd() { }
+        public void OnGameEnd()
+        {
+        }
+
+        public int GetSpawnCount()
+        {
+            return _spawnCount;
+        }
 
         private GameObject GetCurrentEnemyPrefab()
         {

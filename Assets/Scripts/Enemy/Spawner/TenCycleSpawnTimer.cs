@@ -1,4 +1,6 @@
-﻿using Dodge.Library.Enemy.Spawner;
+﻿using System;
+using Library.Core;
+using Library.Enemy.Spawner;
 using UnityEngine;
 
 namespace Dodge.Enemy.Spawner
@@ -7,45 +9,43 @@ namespace Dodge.Enemy.Spawner
     {
         private const float EnemySpawnTimeIncrement = 0.25f;
         private const int SpawnCycleSize = 10;
-        public float pauseBetweenEnemySpawns = 2.5f;
 
-        public float pauseBetweenSpawnCycles = 5f;
-        private float _enemySpawnTimeoutEnd;
+        [SerializeField] private float pauseBetweenEnemySpawns = 2.5f;
 
-        private int _spawnCount;
-        private float _spawnCyclePauseEnd;
-        
+        [SerializeField] private float pauseBetweenSpawnCycles = 5f;
+        private Timer _enemySpawnTimeoutTimer;
+
         private bool _gameEnd;
+        private Timer _spawnCyclePauseTimer;
 
-
-        public bool CanSpawn()
+        public void Tick(float deltaTime)
         {
-            return !IsSpawnCyclePause() && !IsEnemySpawnTimeout() && !_gameEnd;
+            _enemySpawnTimeoutTimer?.Tick(deltaTime);
+            _spawnCyclePauseTimer?.Tick(deltaTime);
         }
 
-        public void IncreaseDifficulty()
+        public bool IsGameEnd()
         {
-            DecreaseTimeBetweenSpawns();
+            return !_gameEnd;
         }
 
-        public void InvokePause()
+        public void InvokePause(params Action[] onPauseEndActions)
         {
-            _enemySpawnTimeoutEnd = Time.time + pauseBetweenEnemySpawns;
+            _enemySpawnTimeoutTimer = new Timer(pauseBetweenEnemySpawns);
+            foreach (var action in onPauseEndActions)
+                _enemySpawnTimeoutTimer.OnTimerEnd += action;
         }
 
-        public void InvokeLongPause()
+        public void InvokeLongPause(params Action[] onLongPauseEndActions)
         {
-            _spawnCyclePauseEnd = Time.time + pauseBetweenSpawnCycles;
+            _spawnCyclePauseTimer = new Timer(pauseBetweenSpawnCycles);
+            foreach (var action in onLongPauseEndActions)
+                _spawnCyclePauseTimer.OnTimerEnd += action;
         }
 
-        public void IncrementSpawnCount()
+        public bool CanIncreaseDifficulty(int spawnCount)
         {
-            _spawnCount++;
-        }
-
-        public bool HasSpawnedEnoughEnemiesForLongPause()
-        {
-            return _spawnCount % SpawnCycleSize == 0;
+            return spawnCount != 0 && spawnCount % SpawnCycleSize == 0;
         }
 
         public void OnGameEnd()
@@ -53,14 +53,19 @@ namespace Dodge.Enemy.Spawner
             _gameEnd = true;
         }
 
-        private bool IsSpawnCyclePause()
+        public bool IsPause()
         {
-            return Time.time < _spawnCyclePauseEnd;
+            return !_enemySpawnTimeoutTimer?.HasEnded() ?? false;
         }
 
-        private bool IsEnemySpawnTimeout()
+        public bool IsLongPause()
         {
-            return Time.time < _enemySpawnTimeoutEnd;
+            return !_spawnCyclePauseTimer?.HasEnded() ?? false;
+        }
+
+        public void IncreaseDifficulty()
+        {
+            DecreaseTimeBetweenSpawns();
         }
 
         private void DecreaseTimeBetweenSpawns()

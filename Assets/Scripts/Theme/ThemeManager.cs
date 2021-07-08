@@ -22,7 +22,7 @@ namespace Dodge.Theme
         private void Start()
         {
             _themeDictionary = GetThemes();
-            
+
             ApplyTheme(SelectedThemeName);
         }
 
@@ -41,7 +41,7 @@ namespace Dodge.Theme
         {
             var themeList = _themeDictionary.Values.ToList();
             themeList.Sort((x, y) => x.scoreToUnlock.CompareTo(y.scoreToUnlock));
-            
+
             return themeList;
         }
 

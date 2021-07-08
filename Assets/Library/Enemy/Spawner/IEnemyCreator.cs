@@ -7,5 +7,7 @@ namespace Dodge.Library.Enemy.Spawner
         void IncreaseDifficulty();
 
         void OnGameEnd();
+
+        int GetSpawnCount();
     }
 }

@@ -1,15 +1,17 @@
 using Dodge.Core;
 using Dodge.Library.Enemy.Spawner;
+using Library.Enemy.Spawner;
 using UnityEngine;
 
 namespace Dodge.Enemy.Spawner
 {
     using SpawnerLibrary = global::Library.Enemy.Spawner.Spawner;
+
     public class Spawner : MonoBehaviour
     {
         private IEnemyCreator _enemyCreator;
-        private IEnemySpawnTimer _spawnTimer;
         private SpawnerLibrary _spawner;
+        private IEnemySpawnTimer _spawnTimer;
 
         private void Awake()
         {
@@ -25,6 +27,7 @@ namespace Dodge.Enemy.Spawner
 
         private void Update()
         {
+            _spawner.Tick(Time.deltaTime);
             _spawner.EvaluateSpawningAnEnemy();
         }
 

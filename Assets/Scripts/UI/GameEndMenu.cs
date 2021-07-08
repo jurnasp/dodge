@@ -8,7 +8,7 @@ namespace Dodge.UI
     public class GameEndMenu : MonoBehaviour
     {
         public Text highScoreText;
-        
+
         public void NewGame()
         {
             SceneManager.LoadScene(1);

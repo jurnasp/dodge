@@ -6,28 +6,24 @@ namespace Library.Enemy.Spawner
     {
         private readonly IEnemyCreator _enemyCreator;
         private readonly IEnemySpawnTimer _spawnTimer;
-        
+
         public Spawner(IEnemyCreator enemyCreator, IEnemySpawnTimer spawnTimer)
         {
             _enemyCreator = enemyCreator;
             _spawnTimer = spawnTimer;
         }
 
+        public void Tick(float deltaTime)
+        {
+            _spawnTimer.Tick(deltaTime);
+        }
+
         public void EvaluateSpawningAnEnemy()
         {
-            if (!_spawnTimer.CanSpawn()) return;
-
-            _enemyCreator.Create();
-            _spawnTimer.IncrementSpawnCount();
-
-            if (_spawnTimer.HasSpawnedEnoughEnemiesForLongPause())
-            {
-                _spawnTimer.InvokeLongPause();
-                IncreaseDifficulty();
-                return;
-            }
-
-            _spawnTimer.InvokePause();
+            if (!_spawnTimer.IsLongPause() && _spawnTimer.CanIncreaseDifficulty(_enemyCreator.GetSpawnCount()))
+                _spawnTimer.InvokeLongPause(IncreaseDifficulty, _enemyCreator.Create);
+            else if (!_spawnTimer.IsLongPause() && !_spawnTimer.IsPause() && !_spawnTimer.IsGameEnd())
+                _spawnTimer.InvokePause(_enemyCreator.Create);
         }
 
         private void IncreaseDifficulty()

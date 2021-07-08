@@ -10,9 +10,9 @@ namespace Dodge.Game
         private const string EnemyTag = "Enemy";
         private const int BufferSize = 20;
         public Text highScoreText;
+        private bool _gameEnd;
 
         private LimitedQueue<int> _limitedQueue;
-        private bool _gameEnd;
         public int Score { get; private set; }
 
         private void Start()

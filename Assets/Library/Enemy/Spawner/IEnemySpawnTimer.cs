@@ -1,17 +1,24 @@
-namespace Dodge.Library.Enemy.Spawner
+using System;
+
+namespace Library.Enemy.Spawner
 {
     public interface IEnemySpawnTimer
     {
-        bool CanSpawn();
+        void Tick(float deltaTime);
+
+        bool IsGameEnd();
+
         void IncreaseDifficulty();
 
-        void InvokePause();
+        void InvokePause(params Action[] onPauseEndActions);
 
-        void InvokeLongPause();
+        bool IsPause();
 
-        void IncrementSpawnCount();
+        void InvokeLongPause(params Action[] onLongPauseEndActions);
 
-        bool HasSpawnedEnoughEnemiesForLongPause();
+        bool IsLongPause();
+
+        bool CanIncreaseDifficulty(int spawnCount);
 
         void OnGameEnd();
     }

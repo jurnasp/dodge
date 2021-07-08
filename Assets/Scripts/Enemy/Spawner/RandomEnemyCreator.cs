@@ -14,9 +14,10 @@ namespace Dodge.Enemy.Spawner
 
         public float enemySpeed = 15f;
 
-        private Random _random;
-
         private bool _gameEnd;
+
+        private Random _random;
+        private int _spawnCount;
 
         private void Start()
         {
@@ -26,23 +27,30 @@ namespace Dodge.Enemy.Spawner
         public void Create()
         {
             if (_gameEnd) return;
-            
+
             var enemy = Instantiate(GetRandomEnemyPrefab());
 
             enemy.transform.position += transform.position;
             enemy.GetComponent<EnemyMove>().speed = enemySpeed;
+
+            _spawnCount++;
         }
 
         public void IncreaseDifficulty()
         {
             if (_gameEnd) return;
-            
+
             enemySpeed += EnemySpeedAdd;
         }
 
         public void OnGameEnd()
         {
             _gameEnd = true;
+        }
+
+        public int GetSpawnCount()
+        {
+            return _spawnCount;
         }
 
         private GameObject GetRandomEnemyPrefab()

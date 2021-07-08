@@ -7,10 +7,15 @@ namespace Dodge.Game
     {
         public UnityEvent gameEnd;
 
+        // private bool _hasGameEnded;
+
         [ContextMenu("Invoke game end")]
         public void GameEnd()
         {
+            // if (_hasGameEnded) return;
+
             gameEnd.Invoke();
+            // _hasGameEnded = true;
         }
     }
 }

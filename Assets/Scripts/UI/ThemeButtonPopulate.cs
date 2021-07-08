@@ -18,10 +18,7 @@ namespace Dodge.UI
 
             SetTextContent(theme.themeName);
 
-            if (!theme.IsUnlocked())
-            {
-                DisableButton();
-            }
+            if (!theme.IsUnlocked()) DisableButton();
         }
 
         private void SetGameObjectName(string themeName)
