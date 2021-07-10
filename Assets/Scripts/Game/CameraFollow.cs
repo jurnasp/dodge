@@ -19,8 +19,15 @@ namespace Game
         private void FixedUpdate()
         {
             var desiredPosition = GetTarget() + _offset;
-            var smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-            transform.position = smoothedPosition;
+            if (Vector3.Distance(transform.position, desiredPosition) > 0.01f)
+            {
+                var smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+                transform.position = smoothedPosition;
+            }
+            else
+            {
+                transform.position = desiredPosition;
+            }
         }
 
         private Vector3 GetTarget()

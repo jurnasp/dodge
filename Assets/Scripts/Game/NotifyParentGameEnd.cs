@@ -1,11 +1,12 @@
 using Core;
+using Library.Core;
 using UnityEngine;
 
 namespace Game
 {
     public class NotifyParentGameEnd : MonoBehaviourParentMessenger
     {
-        private const string EnemyTag = "Enemy";
+        private const string EnemyTag = Tag.Enemy;
 
         private void OnTriggerEnter(Collider other)
         {

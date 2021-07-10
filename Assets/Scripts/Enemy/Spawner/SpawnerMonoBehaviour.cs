@@ -33,7 +33,7 @@ namespace Enemy.Spawner
 
         public void StopSpawning()
         {
-            _spawner.EndGame();
+            _spawner?.EndGame();
         }
     }
 }

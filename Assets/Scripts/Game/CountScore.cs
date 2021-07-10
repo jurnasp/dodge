@@ -1,4 +1,5 @@
 ﻿using Core;
+using Library.Core;
 using Library.Game;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +8,7 @@ namespace Game
 {
     public class CountScore : MonoBehaviour
     {
-        private const string EnemyTag = "Enemy";
+        private const string EnemyTag = Tag.Enemy;
         private const int BufferSize = 20;
         public Text highScoreText;
         private bool _gameEnd;
@@ -64,6 +65,11 @@ namespace Game
         {
             if (Score > PlayerConfig.GetHighScore())
                 PlayerConfig.SetHighScore(Score);
+        }
+
+        public void AddScoreToTotalScore()
+        {
+            PlayerConfig.AddTotalScore(Score);
         }
     }
 }

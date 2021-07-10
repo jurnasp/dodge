@@ -7,10 +7,16 @@ namespace Game
     {
         public UnityEvent gameEnd;
 
+        private bool _hasGameEnded;
+
         [ContextMenu("Invoke game end")]
         public void GameEnd()
         {
-            gameEnd.Invoke();
+            if (!_hasGameEnded)
+            {
+                gameEnd.Invoke();
+                _hasGameEnded = true;
+            }
         }
     }
 }
