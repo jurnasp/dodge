@@ -5,12 +5,12 @@ using UnityEngine;
 
 namespace Dodge.Enemy.Spawner
 {
-    using SpawnerLibrary = global::Library.Enemy.Spawner.Spawner;
+    using Spawner = global::Library.Enemy.Spawner.Spawner;
 
-    public class Spawner : MonoBehaviour
+    public class SpawnerMonoBehaviour : MonoBehaviour
     {
         private IEnemyCreator _enemyCreator;
-        private SpawnerLibrary _spawner;
+        private Spawner _spawner;
         private IEnemySpawnTimer _spawnTimer;
 
         private void Awake()
@@ -22,7 +22,7 @@ namespace Dodge.Enemy.Spawner
         private void Start()
         {
             PlayerConfig.IncrementTotalGamesPlayed();
-            _spawner = new SpawnerLibrary(_enemyCreator, _spawnTimer);
+            _spawner = new Spawner(_enemyCreator, _spawnTimer);
         }
 
         private void Update()

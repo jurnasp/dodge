@@ -61,11 +61,11 @@ namespace Dodge.Core
         private readonly float speedNormal = -12f;
         private float _addTime;
         private float _holdTimer;
-        private LoseTrigger _leftFreeze;
+        // private LoseTrigger _leftFreeze;
         private float _pause = 2.5f;
         private float _pauseTimer;
-        private LoseTrigger _rightFreeze;
-        private ScoreAdd _scoreRead;
+        // private LoseTrigger _rightFreeze;
+        // private ScoreAdd _scoreRead;
 
         private CountScore _spawnCount;
         private float _speed;
@@ -78,10 +78,10 @@ namespace Dodge.Core
 
         private void Awake()
         {
-            _scoreRead = scoreAdder.GetComponent<ScoreAdd>();
+            // _scoreRead = scoreAdder.GetComponent<ScoreAdd>();
             _spawnCount = scoreCounter.GetComponent<CountScore>();
-            _leftFreeze = left.GetComponent<LoseTrigger>();
-            _rightFreeze = right.GetComponent<LoseTrigger>();
+            // _leftFreeze = left.GetComponent<LoseTrigger>();
+            // _rightFreeze = right.GetComponent<LoseTrigger>();
             // _buttonIsPressed = left.GetComponent<ControlLeft>();
         }
 
@@ -361,7 +361,7 @@ namespace Dodge.Core
 
         private bool IsLose()
         {
-            return _leftFreeze.lost | _rightFreeze.lost;
+            return false; //_leftFreeze.lost | _rightFreeze.lost;
         }
     }
 }

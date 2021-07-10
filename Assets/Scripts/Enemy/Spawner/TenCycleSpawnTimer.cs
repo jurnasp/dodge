@@ -26,7 +26,7 @@ namespace Dodge.Enemy.Spawner
 
         public bool IsGameEnd()
         {
-            return !_gameEnd;
+            return _gameEnd;
         }
 
         public void InvokePause(params Action[] onPauseEndActions)

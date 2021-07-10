@@ -8,8 +8,8 @@ namespace Dodge.Game
         public Transform[] targets;
         public float smoothSpeed = 0.125f;
         public bool offsetByStartingPosition = true;
+        
         private Vector3 _offset;
-
 
         private void Start()
         {
