@@ -23,7 +23,7 @@ namespace Dodge.Core
 
         private void Update()
         {
-            switch (LeftPressed: input.IsLeftPressed, RightPressed: input.IsRightPressed)
+            switch (input.IsLeftPressed, input.IsRightPressed)
             {
                 case (true, true):
                     rightPlayerCube.transform.position = MoveTo(rightPlayerCube, _rightCubeStartX + edge);

@@ -18,4 +18,4 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 087a646e452d74ad5a706a3e739e11af, type: 2}
   - {fileID: 2100000, guid: c948c6160b8cc8223a39ac0045588148, type: 2}
   themeName: Blues
-  scoreToUnlock: 5
+  scoreToUnlock: 100

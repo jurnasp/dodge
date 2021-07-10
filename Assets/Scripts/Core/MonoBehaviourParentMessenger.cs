@@ -5,7 +5,7 @@ namespace Dodge.Core
 {
     public class MonoBehaviourParentMessenger : MonoBehaviour
     {
-        public List<MonoBehaviour> parentMonoBehaviours;
+        public List<MonoBehaviour> parentMonoBehaviours = new List<MonoBehaviour>();
 
         protected void NotifyParentsOfEvent(string eventName)
         {

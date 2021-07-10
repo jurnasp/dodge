@@ -4625,6 +4625,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ThemePanel
       objectReference: {fileID: 0}
+    - target: {fileID: 2344899870452671511, guid: ee3aa5ac61da331f08c5441ba1ac1111,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2344899871355986363, guid: ee3aa5ac61da331f08c5441ba1ac1111,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -4640,5 +4645,30 @@ PrefabInstance:
       propertyPath: themeManager
       value: 
       objectReference: {fileID: 1227719330}
+    - target: {fileID: 2344899871614775949, guid: ee3aa5ac61da331f08c5441ba1ac1111,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2344899871614775949, guid: ee3aa5ac61da331f08c5441ba1ac1111,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2344899871828085361, guid: ee3aa5ac61da331f08c5441ba1ac1111,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2344899871828085361, guid: ee3aa5ac61da331f08c5441ba1ac1111,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2344899871828085361, guid: ee3aa5ac61da331f08c5441ba1ac1111,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee3aa5ac61da331f08c5441ba1ac1111, type: 3}

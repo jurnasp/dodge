@@ -18,4 +18,4 @@ MonoBehaviour:
   - {fileID: 2100000, guid: ca6ff5ce2351e37bf9abb0de7d4f2997, type: 2}
   - {fileID: 2100000, guid: b018cf0326c26c0c0b3f349c55c20264, type: 2}
   themeName: Neon
-  scoreToUnlock: 7
+  scoreToUnlock: 100
