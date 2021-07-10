@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Dodge.UI
+namespace UI
 {
     public class ThemeButtonPopulate : MonoBehaviour
     {

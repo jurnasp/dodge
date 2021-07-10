@@ -4,7 +4,7 @@ using Dodge.Library.Enemy.Spawner;
 using UnityEngine;
 using Random = System.Random;
 
-namespace Dodge.Enemy.Spawner
+namespace Enemy.Spawner
 {
     [Serializable]
     public class RandomEnemyCreator : MonoBehaviour, IEnemyCreator

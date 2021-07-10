@@ -1,9 +1,9 @@
-using Dodge.Core;
+using Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Dodge.UI
+namespace UI
 {
     public class GameEndMenu : MonoBehaviour
     {

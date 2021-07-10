@@ -1,12 +1,12 @@
 using System;
-using Dodge.Core;
-using Dodge.Game;
+using Core;
+using Game;
 using Library.Core;
 using Library.Enemy.Spawner;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Dodge.Enemy.Spawner.Tutorial
+namespace Enemy.Spawner.Tutorial
 {
     public class TutorialSpawnTimer : MonoBehaviour, IEnemySpawnTimer
     {

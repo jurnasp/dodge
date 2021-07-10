@@ -1,9 +1,9 @@
-﻿using Dodge.Core;
+﻿using Core;
 using Library.Game;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Dodge.Game
+namespace Game
 {
     public class CountScore : MonoBehaviour
     {

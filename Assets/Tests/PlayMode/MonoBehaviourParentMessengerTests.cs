@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Dodge.Core;
+using Core;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;

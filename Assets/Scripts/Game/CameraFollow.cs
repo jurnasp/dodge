@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using UnityEngine;
 
-namespace Dodge.Game
+namespace Game
 {
     public class CameraFollow : MonoBehaviour
     {

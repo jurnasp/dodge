@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Dodge.Core
+namespace Core
 {
     public class InputManager : MonoBehaviour
     {

@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-using Dodge.Game;
-using Dodge.UI;
+using Game;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
-namespace Dodge.Core
+namespace Core
 {
     public class EnemyManager : MonoBehaviour
     {

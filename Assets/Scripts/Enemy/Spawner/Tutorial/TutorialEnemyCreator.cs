@@ -2,7 +2,7 @@ using System;
 using Dodge.Library.Enemy.Spawner;
 using UnityEngine;
 
-namespace Dodge.Enemy.Spawner.Tutorial
+namespace Enemy.Spawner.Tutorial
 {
     public class TutorialEnemyCreator : MonoBehaviour, IEnemyCreator
     {

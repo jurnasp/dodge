@@ -1,8 +1,8 @@
-using Dodge.Theme;
+using Theme;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Dodge.UI
+namespace UI
 {
     public class ThemeMenuPopulate : MonoBehaviour
     {

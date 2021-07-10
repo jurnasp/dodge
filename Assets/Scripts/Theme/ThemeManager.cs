@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
-using Dodge.Core;
+using Core;
 using UnityEngine;
 
-namespace Dodge.Theme
+namespace Theme
 {
     public class ThemeManager : MonoBehaviour
     {

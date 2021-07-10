@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Dodge.Theme
+namespace Theme
 {
     public class ThemeApplier : MonoBehaviour
     {

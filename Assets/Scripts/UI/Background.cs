@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Dodge.UI
+namespace UI
 {
     public class Background : MonoBehaviour
     {

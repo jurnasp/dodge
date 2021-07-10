@@ -3,7 +3,7 @@ using Library.Core;
 using Library.Enemy.Spawner;
 using UnityEngine;
 
-namespace Dodge.Enemy.Spawner
+namespace Enemy.Spawner
 {
     public class TenCycleSpawnTimer : MonoBehaviour, IEnemySpawnTimer
     {

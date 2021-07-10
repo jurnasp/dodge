@@ -1,7 +1,7 @@
-using Dodge.Core;
+using Core;
 using UnityEngine;
 
-namespace Dodge.Game
+namespace Game
 {
     public class NotifyParentGameEnd : MonoBehaviourParentMessenger
     {

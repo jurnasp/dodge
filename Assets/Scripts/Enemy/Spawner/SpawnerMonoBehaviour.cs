@@ -1,9 +1,9 @@
-using Dodge.Core;
+using Core;
 using Dodge.Library.Enemy.Spawner;
 using Library.Enemy.Spawner;
 using UnityEngine;
 
-namespace Dodge.Enemy.Spawner
+namespace Enemy.Spawner
 {
     using Spawner = global::Library.Enemy.Spawner.Spawner;
 

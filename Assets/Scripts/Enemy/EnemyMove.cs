@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Dodge.Enemy
+namespace Enemy
 {
     public class EnemyMove : MonoBehaviour
     {

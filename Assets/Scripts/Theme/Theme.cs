@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using Dodge.Core;
+using Core;
 using JetBrains.Annotations;
 using UnityEngine;
 
-namespace Dodge.Theme
+namespace Theme
 {
     [CreateAssetMenu(fileName = "Themes", menuName = "ScriptableObjects/ThemeScriptableObject", order = 1)]
     public class Theme : ScriptableObject

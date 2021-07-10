@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Dodge.Game
+namespace Game
 {
     public class GameEndManager : MonoBehaviour
     {
