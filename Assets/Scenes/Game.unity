@@ -784,8 +784,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1841533853}
+        m_TargetAssemblyTypeName: Enemy.Spawner.SpawnerMonoBehaviour, Scripts
+        m_MethodName: StopSpawning
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 669164039}
-        m_TargetAssemblyTypeName: Dodge.Game.CountScore, Assembly-CSharp
+        m_TargetAssemblyTypeName: Game.CountScore, Scripts
         m_MethodName: StopCountingScore
         m_Mode: 1
         m_Arguments:
@@ -797,7 +809,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 669164039}
-        m_TargetAssemblyTypeName: Dodge.Game.CountScore, Assembly-CSharp
+        m_TargetAssemblyTypeName: Game.CountScore, Scripts
         m_MethodName: TryUpdateHighScore
         m_Mode: 1
         m_Arguments:
@@ -808,8 +820,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 669164039}
+        m_TargetAssemblyTypeName: Game.CountScore, Scripts
+        m_MethodName: AddScoreToTotalScore
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 998209885}
-        m_TargetAssemblyTypeName: Dodge.UI.GameEndMenu, Assembly-CSharp
+        m_TargetAssemblyTypeName: UI.GameEndMenu, Scripts
         m_MethodName: RefreshHighScoreText
         m_Mode: 1
         m_Arguments:

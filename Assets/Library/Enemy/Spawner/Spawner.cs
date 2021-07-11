@@ -1,5 +1,3 @@
-using Dodge.Library.Enemy.Spawner;
-
 namespace Library.Enemy.Spawner
 {
     public class Spawner
@@ -16,13 +14,16 @@ namespace Library.Enemy.Spawner
         public void Tick(float deltaTime)
         {
             _spawnTimer.Tick(deltaTime);
+            EvaluateSpawningAnEnemy();
         }
 
-        public void EvaluateSpawningAnEnemy()
+        private void EvaluateSpawningAnEnemy()
         {
+            if (_spawnTimer.IsGameEnd()) {return;}
+            
             if (!_spawnTimer.IsLongPause() && _spawnTimer.CanIncreaseDifficulty(_enemyCreator.GetSpawnCount()))
                 _spawnTimer.InvokeLongPause(IncreaseDifficulty, _enemyCreator.Create);
-            else if (!_spawnTimer.IsLongPause() && !_spawnTimer.IsPause() && !_spawnTimer.IsGameEnd())
+            else if (!_spawnTimer.IsLongPause() && !_spawnTimer.IsPause())
                 _spawnTimer.InvokePause(_enemyCreator.Create);
         }
 
@@ -36,6 +37,11 @@ namespace Library.Enemy.Spawner
         {
             _spawnTimer.OnGameEnd();
             _enemyCreator.OnGameEnd();
+        }
+
+        public bool Test(bool input)
+        {
+            return input;
         }
     }
 }

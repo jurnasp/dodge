@@ -1,5 +1,4 @@
 using Core;
-using Dodge.Library.Enemy.Spawner;
 using Library.Enemy.Spawner;
 using UnityEngine;
 
@@ -28,7 +27,6 @@ namespace Enemy.Spawner
         private void Update()
         {
             _spawner.Tick(Time.deltaTime);
-            _spawner.EvaluateSpawningAnEnemy();
         }
 
         public void StopSpawning()

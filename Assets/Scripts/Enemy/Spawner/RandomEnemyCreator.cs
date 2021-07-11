@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Dodge.Library.Enemy.Spawner;
+using Library.Enemy.Spawner;
 using UnityEngine;
 using Random = System.Random;
 
