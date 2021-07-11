@@ -38,10 +38,5 @@ namespace Library.Enemy.Spawner
             _spawnTimer.OnGameEnd();
             _enemyCreator.OnGameEnd();
         }
-
-        public bool Test(bool input)
-        {
-            return input;
-        }
     }
 }
