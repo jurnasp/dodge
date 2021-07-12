@@ -207,7 +207,7 @@ BoxCollider:
   m_GameObject: {fileID: 22172838}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -835,6 +835,18 @@ MonoBehaviour:
       - m_Target: {fileID: 998209885}
         m_TargetAssemblyTypeName: UI.GameEndMenu, Scripts
         m_MethodName: RefreshHighScoreText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1313068834}
+        m_TargetAssemblyTypeName: Core.PlayerController, Scripts
+        m_MethodName: GameEnd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1601,7 +1613,7 @@ BoxCollider:
   m_GameObject: {fileID: 770296808}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -4283,7 +4295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 064dc96b337b4e10bedef6eb1471d730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fragmentedPrefab: {fileID: 6389594073922670988, guid: 610dbb56702e46529a2a86ccb46134d1,
+  fragmentedPrefab: {fileID: 6389594073922670988, guid: cec36c837e6ec0ddb84189eec421c233,
     type: 3}
 --- !u!114 &2023608001
 MonoBehaviour:
