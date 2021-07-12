@@ -33,7 +33,7 @@ namespace Game
         private Vector3 GetTarget()
         {
             var sum = new Vector3();
-            sum = targets.Aggregate(sum, (current, target) => current + target.position);
+            sum = targets.Where(target => target).Aggregate(sum, (current, target) => current + target.position);
             sum /= targets.Length;
             return sum;
         }

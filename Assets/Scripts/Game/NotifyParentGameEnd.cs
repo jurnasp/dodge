@@ -12,7 +12,7 @@ namespace Game
         {
             if (!IsEnemy(other)) return;
 
-            GameEnd();
+            NotifyGameEnd();
         }
 
         private static bool IsEnemy(Collider other)
@@ -20,7 +20,7 @@ namespace Game
             return other.CompareTag(EnemyTag);
         }
 
-        private void GameEnd()
+        private void NotifyGameEnd()
         {
             NotifyParentsOfEvent("GameEnd");
         }

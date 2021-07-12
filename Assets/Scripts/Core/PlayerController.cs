@@ -14,6 +14,7 @@ namespace Core
         public float edge = 5.2f;
         private float _leftCubeStartX;
         private float _rightCubeStartX;
+        private bool _stop;
 
         private void Start()
         {
@@ -23,6 +24,8 @@ namespace Core
 
         private void Update()
         {
+            if (_stop) return;
+            
             switch (input.IsLeftPressed, input.IsRightPressed)
             {
                 case (true, true):
@@ -50,6 +53,11 @@ namespace Core
                 return cube.transform.position;
 
             return Vector3.MoveTowards(cube.transform.position, Vector3.right * toCord, speed * Time.deltaTime);
+        }
+
+        public void GameEnd()
+        {
+            _stop = true;
         }
     }
 }
