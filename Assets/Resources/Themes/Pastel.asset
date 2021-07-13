@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6f9ad04dd643f0944f129582f71b02, type: 3}
+  m_Name: Pastel
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 2100000, guid: 95d050641662732f1856537723a9641a, type: 2}
+  - {fileID: 2100000, guid: cffa0f1892829471a9f1ad088c55f060, type: 2}
+  - {fileID: 2100000, guid: 58786d49474e233a98d74b14e595302c, type: 2}
+  - {fileID: 2100000, guid: 51ec0765d9e148d98bb17f187a7926c0, type: 2}
+  themeName: Pastel
+  scoreToUnlock: 250
