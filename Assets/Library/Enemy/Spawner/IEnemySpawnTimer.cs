@@ -4,6 +4,7 @@ namespace Library.Enemy.Spawner
 {
     public interface IEnemySpawnTimer
     {
+        bool Stopped { get; }
         void Tick(float deltaTime);
 
         bool IsGameEnd();

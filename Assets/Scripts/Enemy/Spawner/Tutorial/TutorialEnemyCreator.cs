@@ -6,11 +6,9 @@ namespace Enemy.Spawner.Tutorial
 {
     public class TutorialEnemyCreator : MonoBehaviour, IEnemyCreator
     {
-        public float tutorialEnemySpeed = 15f;
+        [SerializeField] private TutorialPanel[] enemiesToPanels;
 
-        public TutorialEnemyToPanel[] enemiesToPanels;
-
-        private TutorialEnemyToPanel _currentEnemyToPanel;
+        private TutorialPanel _currentPanel;
         private int _index;
         private int _spawnCount;
 
@@ -21,20 +19,16 @@ namespace Enemy.Spawner.Tutorial
 
         public void Create()
         {
-            var enemy = Instantiate(GetCurrentEnemyPrefab());
-
-            enemy.transform.position += transform.position;
-            enemy.GetComponent<EnemyMove>().speed = tutorialEnemySpeed;
-
             _spawnCount++;
         }
 
         public void IncreaseDifficulty()
         {
-            HidePanel();
+            HideCurrentPanel();
             _index++;
 
-            ShowPanelAndPrepareEnemy();
+            if (_index < enemiesToPanels.Length)
+                ShowPanelAndPrepareEnemy();
         }
 
         public void OnGameEnd()
@@ -46,31 +40,26 @@ namespace Enemy.Spawner.Tutorial
             return _spawnCount;
         }
 
-        private GameObject GetCurrentEnemyPrefab()
-        {
-            return _currentEnemyToPanel.tutorialPrefab;
-        }
-
         private void ShowPanelAndPrepareEnemy()
         {
-            _currentEnemyToPanel = enemiesToPanels[_index];
-            ShowPanel();
+            
+            _currentPanel = enemiesToPanels[_index];
+            ShowCurrentPanel();
         }
 
-        private void ShowPanel()
+        private void ShowCurrentPanel()
         {
-            _currentEnemyToPanel.tutorialPanel.SetActive(true);
+            _currentPanel.tutorialPanel.SetActive(true);
         }
 
-        private void HidePanel()
+        private void HideCurrentPanel()
         {
-            _currentEnemyToPanel.tutorialPanel.SetActive(false);
+            _currentPanel.tutorialPanel.SetActive(false);
         }
 
         [Serializable]
-        public class TutorialEnemyToPanel
+        public class TutorialPanel
         {
-            public GameObject tutorialPrefab;
             public GameObject tutorialPanel;
         }
     }

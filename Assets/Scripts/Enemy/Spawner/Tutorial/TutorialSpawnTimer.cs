@@ -1,71 +1,38 @@
 using System;
 using Core;
-using Game;
-using Library.Core;
 using Library.Enemy.Spawner;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Enemy.Spawner.Tutorial
 {
     public class TutorialSpawnTimer : MonoBehaviour, IEnemySpawnTimer
     {
         public InputManager inputManager;
-        public CountScore scoreCounter;
 
-        public float pauseBetweenEnemySpawns = 6.5f;
-        public float pauseBetweenSpawnCycles = 1f;
-
-        [FormerlySerializedAs("keyHeldTime")] [SerializeField]
+        [SerializeField]
         private float timeToHoldKeyDown = 1.5f;
-
-        private CancelableTimer _enemySpawnTimeoutTimer;
-
-        private bool _gameEnd;
-
-        private int _index;
 
         private float? _keyHeldTime;
 
-        private Timer _spawnCyclePauseTimer;
+        private bool _gameEnd;
 
+        public bool Stopped { get; private set; }
 
-        public void Tick(float deltaTime)
-        {
-            _enemySpawnTimeoutTimer?.Tick(deltaTime);
-            _spawnCyclePauseTimer?.Tick(deltaTime);
-        }
+        public void Tick(float deltaTime) { }
 
         public bool IsGameEnd()
         {
             return _gameEnd;
         }
 
-        public void IncreaseDifficulty()
-        {
-            print("IncreaseDifficulty");
-            _index++;
-        }
+        public void IncreaseDifficulty() { }
 
-        public void InvokePause(params Action[] onPauseEndActions)
-        {
-            print("InvokePause");
-            _enemySpawnTimeoutTimer = new CancelableTimer(pauseBetweenEnemySpawns);
-            foreach (var action in onPauseEndActions)
-                _enemySpawnTimeoutTimer.OnTimerEnd += action;
-        }
+        public void InvokePause(params Action[] onPauseEndActions) { }
 
         public void InvokeLongPause(params Action[] onLongPauseEndActions)
         {
-            _spawnCyclePauseTimer = new Timer(pauseBetweenSpawnCycles);
-
-            _spawnCyclePauseTimer.OnTimerEnd += onLongPauseEndActions[0];
-            _enemySpawnTimeoutTimer.Cancel();
-        }
-
-        public bool CanIncreaseDifficulty(int spawnCount)
-        {
-            return HasPassedCurrentEnemy() && !IsGameEnd();
+            foreach (var action in onLongPauseEndActions)
+                action.Invoke();
         }
 
         public void OnGameEnd()
@@ -75,17 +42,28 @@ namespace Enemy.Spawner.Tutorial
 
         public bool IsPause()
         {
-            return HasEnded(_enemySpawnTimeoutTimer) || !IsTutorialKeyHeldLongEnough();
+            return true;
         }
 
         public bool IsLongPause()
         {
-            return HasEnded(_spawnCyclePauseTimer);
+            return false;
         }
 
-        private bool HasPassedCurrentEnemy()
+        public bool CanIncreaseDifficulty(int spawnCount)
         {
-            return _index + 1 == scoreCounter.Score;
+            return !IsGameEnd() && IsTutorialKeyHeldLongEnough(spawnCount);
+        }
+
+        private bool IsTutorialKeyHeldLongEnough(int index)
+        {
+            return index switch
+            {
+                0 => InputHeld(false, true),
+                1 => InputHeld(true, false),
+                2 => InputHeld(true, true),
+                _ => Stopped = true
+            };
         }
 
         private bool InputHeld(bool left, bool right)
@@ -102,22 +80,6 @@ namespace Enemy.Spawner.Tutorial
             }
 
             return false;
-        }
-
-        private static bool HasEnded(Timer timer)
-        {
-            return !timer?.HasEnded() ?? false;
-        }
-
-        private bool IsTutorialKeyHeldLongEnough()
-        {
-            return _index switch
-            {
-                0 => InputHeld(false, true),
-                1 => InputHeld(true, false),
-                2 => InputHeld(true, true),
-                _ => false
-            };
         }
     }
 }

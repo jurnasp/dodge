@@ -8,8 +8,10 @@ namespace Enemy.Spawner
 
     public class SpawnerMonoBehaviour : MonoBehaviour
     {
-        private IEnemyCreator _enemyCreator;
+        public bool IsSpawning => !_spawnTimer.Stopped;
+
         private Spawner _spawner;
+        private IEnemyCreator _enemyCreator;
         private IEnemySpawnTimer _spawnTimer;
 
         private void Awake()

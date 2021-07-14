@@ -18,6 +18,8 @@ namespace Enemy.Spawner
         private bool _gameEnd;
         private Timer _spawnCyclePauseTimer;
 
+        public bool Stopped => false;
+
         public void Tick(float deltaTime)
         {
             _enemySpawnTimeoutTimer?.Tick(deltaTime);

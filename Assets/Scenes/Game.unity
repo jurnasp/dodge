@@ -1310,7 +1310,42 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5285822642191785084, guid: 27722d4985ed4d2e6af22ccbe1e8cdaf,
         type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 5285822642191785084, guid: 27722d4985ed4d2e6af22ccbe1e8cdaf,
+        type: 3}
       propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5286153073900730246, guid: 27722d4985ed4d2e6af22ccbe1e8cdaf,
+        type: 3}
+      propertyPath: ShapeModule.type
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5286153073900730246, guid: 27722d4985ed4d2e6af22ccbe1e8cdaf,
+        type: 3}
+      propertyPath: SizeModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5286153073900730246, guid: 27722d4985ed4d2e6af22ccbe1e8cdaf,
+        type: 3}
+      propertyPath: ShapeModule.radius.mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5286153073900730246, guid: 27722d4985ed4d2e6af22ccbe1e8cdaf,
+        type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1,0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5286153073900730246, guid: 27722d4985ed4d2e6af22ccbe1e8cdaf,
+        type: 3}
+      propertyPath: ShapeModule.alignToDirection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5286153073900730246, guid: 27722d4985ed4d2e6af22ccbe1e8cdaf,
+        type: 3}
+      propertyPath: ShapeModule.radius.speed.scalar
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5448862658113492536, guid: 27722d4985ed4d2e6af22ccbe1e8cdaf,
@@ -2558,7 +2593,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1135786402
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3050,7 +3085,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1350165947
 Transform:
   m_ObjectHideFlags: 0
@@ -4010,7 +4045,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1841533851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4023,17 +4058,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b988e35812e4e378ff3f0edd0acae80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialEnemySpeed: 15
   enemiesToPanels:
-  - tutorialPrefab: {fileID: 4405971196044416731, guid: 88abf0a380fe7c181b0246bd1f8c55fe,
-      type: 3}
-    tutorialPanel: {fileID: 1871021303}
-  - tutorialPrefab: {fileID: 7334467455841862416, guid: 43b55b4ed908c3863a2a881de94dfcba,
-      type: 3}
-    tutorialPanel: {fileID: 1741668472}
-  - tutorialPrefab: {fileID: 9156720261995887013, guid: a94fa2d045dc294eba1210b206f342d7,
-      type: 3}
-    tutorialPanel: {fileID: 1497288111}
+  - tutorialPanel: {fileID: 1871021303}
+  - tutorialPanel: {fileID: 1741668472}
+  - tutorialPanel: {fileID: 1497288111}
 --- !u!114 &1841533852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4047,10 +4075,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputManager: {fileID: 490300684}
-  scoreCounter: {fileID: 669164039}
-  pauseBetweenEnemySpawns: 2.5
-  pauseBetweenSpawnCycles: 1
-  timeToHoldKeyDown: 0.5
+  timeToHoldKeyDown: 1
 --- !u!114 &1841533853
 MonoBehaviour:
   m_ObjectHideFlags: 0
