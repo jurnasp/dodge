@@ -41,7 +41,7 @@ namespace UI
 
         public void TrailsToggle()
         {
-            PlayerConfig.SetIsTrailEnabled(!PlayerConfig.GetIsTutorialEnabled());
+            PlayerConfig.SetIsTrailEnabled(!PlayerConfig.GetIsTrailEnabled());
 
             RefreshIsTrailEnabledButtonText();
         }
