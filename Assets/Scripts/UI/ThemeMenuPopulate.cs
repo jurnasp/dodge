@@ -27,7 +27,7 @@ namespace UI
 
                 go.GetComponentInChildren<Button>().onClick.AddListener(delegate
                 {
-                    themeManager.ApplyTheme(theme.themeName);
+                    themeManager.SelectTheme(theme);
                 });
             }
         }

@@ -9,7 +9,8 @@ namespace Enemy.Spawner
     [Serializable]
     public class RandomEnemyCreator : MonoBehaviour, IEnemyCreator
     {
-        private const float EnemySpeedAdd = 5f;
+        [SerializeField] private float increaseDifficultyIncrement = 5f;
+        [SerializeField] private float increaseDifficultyMultiplier = 5f;
         public List<GameObject> enemyPrefabs;
 
         public float enemySpeed = 15f;
@@ -40,7 +41,8 @@ namespace Enemy.Spawner
         {
             if (_gameEnd) return;
 
-            enemySpeed += EnemySpeedAdd;
+            enemySpeed += increaseDifficultyIncrement;
+            enemySpeed *= increaseDifficultyMultiplier;
         }
 
         public void OnGameEnd()

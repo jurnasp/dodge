@@ -7,9 +7,11 @@ namespace Enemy.Spawner
 {
     public class TenCycleSpawnTimer : MonoBehaviour, IEnemySpawnTimer
     {
-        private const float EnemySpawnTimeIncrement = 0.25f;
+        [SerializeField] private float increaseDifficultyIncrement = 0.25f;
+        [SerializeField] private float increaseDifficultyMultiplier = 1f;
         private const int SpawnCycleSize = 10;
 
+        private const float PauseBetweenEnemySpawnsMin = 0.8f;
         [SerializeField] private float pauseBetweenEnemySpawns = 2.5f;
 
         [SerializeField] private float pauseBetweenSpawnCycles = 5f;
@@ -72,7 +74,12 @@ namespace Enemy.Spawner
 
         private void DecreaseTimeBetweenSpawns()
         {
-            pauseBetweenEnemySpawns -= EnemySpawnTimeIncrement;
+            if (Math.Abs(pauseBetweenEnemySpawns - PauseBetweenEnemySpawnsMin) < 0.1f) return;
+
+            pauseBetweenEnemySpawns -= increaseDifficultyIncrement;
+            pauseBetweenEnemySpawns *= increaseDifficultyMultiplier;
+
+            pauseBetweenEnemySpawns = Math.Max(pauseBetweenEnemySpawns, PauseBetweenEnemySpawnsMin);
         }
     }
 }

@@ -18,4 +18,5 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 58786d49474e233a98d74b14e595302c, type: 2}
   - {fileID: 2100000, guid: 51ec0765d9e148d98bb17f187a7926c0, type: 2}
   themeName: Pastel
-  scoreToUnlock: 250
+  totalScoreToUnlock: 6000
+  highScoreToUnlock: 95

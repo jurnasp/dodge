@@ -18,4 +18,5 @@ MonoBehaviour:
   - {fileID: 2100000, guid: d5875c4ad5a52682bb979e6d64741547, type: 2}
   - {fileID: 2100000, guid: 745a6167bebaa2580bc31e6283a0dd6a, type: 2}
   themeName: Rusty
-  scoreToUnlock: 90
+  totalScoreToUnlock: 2500
+  highScoreToUnlock: 85

@@ -18,4 +18,5 @@ MonoBehaviour:
   - {fileID: 2100000, guid: dbd87e18fc676ad45a719514c341134f, type: 2}
   - {fileID: 2100000, guid: e192eb9b8247ee4a0afd54d16d120f9d, type: 2}
   themeName: Default
-  scoreToUnlock: 0
+  totalScoreToUnlock: 0
+  highScoreToUnlock: 0

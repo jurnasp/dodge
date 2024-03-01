@@ -8,81 +8,68 @@ namespace Theme
     public class ThemeManager : MonoBehaviour
     {
         public ThemeApplier themeApplier;
+        public Dictionary<string, Theme> Themes => GetThemes();
 
-        public Theme currentTheme;
-
-        private Dictionary<string, Theme> _themeDictionary;
-
-        private string SelectedThemeName
+        private Theme CurrentTheme
         {
-            get => PlayerConfig.GetCurrentTheme();
-            set => PlayerConfig.SetCurrentTheme(value);
+            get
+            {
+                var themeName = PlayerConfig.GetCurrentTheme();
+                if (!ThemeExists(themeName) || !Themes[themeName].IsUnlocked())
+                    return Themes.Values.First();
+                return Themes[themeName];
+            }
+            set => PlayerConfig.SetCurrentTheme(value.themeName);
         }
 
         private void Start()
         {
-            _themeDictionary = GetThemes();
-
-            ApplyTheme(SelectedThemeName);
+            SelectTheme(CurrentTheme);
         }
 
+        private Dictionary<string, Theme> _cachedThemes;
         public Dictionary<string, Theme> GetThemes()
         {
-            if (_themeDictionary == null)
+            if (_cachedThemes == null)
             {
                 var themes = Resources.LoadAll<Theme>("Themes");
-                _themeDictionary = themes.OrderBy(x => x.scoreToUnlock).ToDictionary(theme => theme.themeName);
+                _cachedThemes = themes
+                    .OrderByDescending(x => x.IsUnlocked())
+                    .ThenBy(x => x.highScoreToUnlock)
+                    .ToDictionary(theme => theme.themeName);
             }
 
-            return _themeDictionary;
+            return _cachedThemes;
         }
 
         public List<Theme> GetSortedThemes()
         {
-            var themeList = _themeDictionary.Values.ToList();
-            themeList.Sort((x, y) => x.scoreToUnlock.CompareTo(y.scoreToUnlock));
+            var themeList = _cachedThemes.Values.ToList();
+            themeList.Sort((x, y) => x.totalScoreToUnlock.CompareTo(y.totalScoreToUnlock));
 
             return themeList;
         }
 
-        public void ApplyTheme(string themeName)
+        public void SelectTheme(Theme theme)
         {
-            SelectTheme(themeName);
+            CurrentTheme = theme;
 
-            themeApplier.Apply(FindObjectsOfType<Themeable>(), currentTheme);
-        }
-
-        private void SelectTheme(string themeName)
-        {
-            if (!ThemeExists(themeName))
-            {
-                Debug.Log($"Theme \"{themeName}\" doesn't exist.");
-                return;
-            }
-
-            if (!_themeDictionary[themeName].IsUnlocked())
-            {
-                Debug.Log($"Theme \"{themeName}\" not unlocked.");
-                return;
-            }
-
-            SelectedThemeName = themeName;
-            currentTheme = _themeDictionary[themeName];
+            themeApplier.Apply(FindObjectsOfType<Themeable>(), theme);
         }
 
         public bool ThemeExists(string themeName)
         {
-            return _themeDictionary.ContainsKey(themeName);
+            return Themes.ContainsKey(themeName);
         }
 
         public void ApplyThemeToThemeable(Themeable themeableObject)
         {
-            themeApplier.ApplyThemeToThemeable(themeableObject, currentTheme);
+            themeApplier.ApplyThemeToThemeable(themeableObject, CurrentTheme);
         }
 
         public string[] GetThemeNames()
         {
-            return _themeDictionary.Keys.ToArray();
+            return Themes.Keys.ToArray();
         }
 
         #region Singleton

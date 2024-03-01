@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,7 +17,12 @@ namespace UI
         {
             SetGameObjectName(theme.themeName);
 
-            SetTextContent(theme.themeName);
+            var textContent = String.Empty;
+            if (theme.IsUnlocked())
+                textContent += theme.themeName;
+            else
+                textContent += $"total score >= {theme.totalScoreToUnlock}\nor high score >= {theme.highScoreToUnlock}";
+            SetTextContent(textContent);
 
             if (!theme.IsUnlocked()) DisableButton();
         }

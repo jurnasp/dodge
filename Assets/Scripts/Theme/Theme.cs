@@ -8,16 +8,19 @@ namespace Theme
     [CreateAssetMenu(fileName = "Themes", menuName = "ScriptableObjects/ThemeScriptableObject", order = 1)]
     public class Theme : ScriptableObject
     {
+        public Material DefaultMaterial() => new(Shader.Find("Standard")) { color = Color.magenta };
         public Material[] materials;
 
         public string themeName;
-        public int scoreToUnlock;
+        public int totalScoreToUnlock;
+        public int highScoreToUnlock;
 
         private Dictionary<string, Material> _materialDictionary;
 
         public bool IsUnlocked()
         {
-            return PlayerConfig.GetTotalScore() >= scoreToUnlock;
+            return PlayerConfig.GetTotalScore() >= totalScoreToUnlock
+                || PlayerConfig.GetHighScore() >= highScoreToUnlock;
         }
 
         [CanBeNull]
@@ -27,14 +30,9 @@ namespace Theme
             return MaterialExists(materialName) ? _materialDictionary[materialName] : DefaultMaterial();
         }
 
-        private static Material DefaultMaterial()
-        {
-            return new Material(Shader.Find("Standard")) {color = Color.magenta};
-        }
-
         private bool MaterialExists(string materialName)
         {
-            return _materialDictionary.ContainsKey(materialName) && _materialDictionary[materialName] != null;
+            return _materialDictionary.ContainsKey(materialName);
         }
 
         private void LoadMaterials()

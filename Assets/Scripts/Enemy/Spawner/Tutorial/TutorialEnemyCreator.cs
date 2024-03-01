@@ -6,11 +6,10 @@ namespace Enemy.Spawner.Tutorial
 {
     public class TutorialEnemyCreator : MonoBehaviour, IEnemyCreator
     {
-        [SerializeField] private TutorialPanel[] enemiesToPanels;
+        [SerializeField] private TutorialPanelToEnemy[] enemiesToPanels;
 
-        private TutorialPanel _currentPanel;
+        private TutorialPanelToEnemy _currentPanelToEnemy;
         private int _index;
-        private int _spawnCount;
 
         private void Start()
         {
@@ -19,48 +18,51 @@ namespace Enemy.Spawner.Tutorial
 
         public void Create()
         {
-            _spawnCount++;
-        }
-
-        public void IncreaseDifficulty()
-        {
-            HideCurrentPanel();
+            var enemy = Instantiate(_currentPanelToEnemy.enemy);
+            enemy.transform.position += transform.position;
             _index++;
+
+            HideCurrentPanel();
 
             if (_index < enemiesToPanels.Length)
                 ShowPanelAndPrepareEnemy();
         }
 
+        public void IncreaseDifficulty()
+        {
+        }
+
         public void OnGameEnd()
         {
+            HideCurrentPanel();
         }
 
         public int GetSpawnCount()
         {
-            return _spawnCount;
+            return _index;
         }
 
         private void ShowPanelAndPrepareEnemy()
         {
-            
-            _currentPanel = enemiesToPanels[_index];
+            _currentPanelToEnemy = enemiesToPanels[_index];
             ShowCurrentPanel();
         }
 
         private void ShowCurrentPanel()
         {
-            _currentPanel.tutorialPanel.SetActive(true);
+            _currentPanelToEnemy.tutorialPanel.SetActive(true);
         }
 
         private void HideCurrentPanel()
         {
-            _currentPanel.tutorialPanel.SetActive(false);
+            _currentPanelToEnemy.tutorialPanel.SetActive(false);
         }
 
         [Serializable]
-        public class TutorialPanel
+        public class TutorialPanelToEnemy
         {
             public GameObject tutorialPanel;
+            public GameObject enemy;
         }
     }
 }
