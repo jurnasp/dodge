@@ -54,7 +54,7 @@ namespace Theme
         {
             CurrentTheme = theme;
 
-            themeApplier.Apply(FindObjectsOfType<Themeable>(), theme);
+            themeApplier.Apply(FindObjectsByType<Themeable>(FindObjectsSortMode.None), theme);
         }
 
         public bool ThemeExists(string themeName)

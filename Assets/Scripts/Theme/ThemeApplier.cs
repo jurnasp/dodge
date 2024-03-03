@@ -1,10 +1,16 @@
+using System;
 using UnityEngine;
 
 namespace Theme
 {
     public class ThemeApplier : MonoBehaviour
     {
-        public new Camera camera;
+        private Camera Camera { get; set; }
+
+        private void Awake()
+        {
+            Camera = Camera.main;
+        }
 
         public void Apply(Themeable[] themeableObjects, Theme currentTheme)
         {
@@ -27,7 +33,7 @@ namespace Theme
         private void ApplyThemeToBackground(Theme currentTheme)
         {
             var themeMaterial = currentTheme.FindMaterialWithName("background");
-            if (themeMaterial != null) camera.backgroundColor = themeMaterial.color;
+            if (themeMaterial != null) Camera.backgroundColor = themeMaterial.color;
         }
     }
 }
