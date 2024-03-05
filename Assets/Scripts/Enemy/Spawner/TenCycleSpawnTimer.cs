@@ -11,7 +11,7 @@ namespace Enemy.Spawner
         [SerializeField] private float increaseDifficultyMultiplier = 1f;
         private const int SpawnCycleSize = 10;
 
-        private const float PauseBetweenEnemySpawnsMin = 0.8f;
+        private const float PauseBetweenEnemySpawnsMin = 0.5f;
         [SerializeField] private float pauseBetweenEnemySpawns = 2.5f;
 
         [SerializeField] private float pauseBetweenSpawnCycles = 5f;

@@ -3016,7 +3016,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41b66263f8e04462bacf0c07a2930801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 1434867397}
 --- !u!1 &1241344002
 GameObject:
   m_ObjectHideFlags: 0
@@ -3200,7 +3199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ba12455b7b4ca070ae212234079728e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  increaseDifficultyIncrement: 3.5
+  increaseDifficultyIncrement: 4.5
   increaseDifficultyMultiplier: 1
   enemyPrefabs:
   - {fileID: 8182880118419099050, guid: 329a936aab2b67b7c81a46223358d749, type: 3}
@@ -3223,7 +3222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   increaseDifficultyIncrement: 0
-  increaseDifficultyMultiplier: 0.85
+  increaseDifficultyMultiplier: 0.9
   pauseBetweenEnemySpawns: 2.5
   pauseBetweenSpawnCycles: 5
 --- !u!114 &1350165950
@@ -3411,6 +3410,7 @@ GameObject:
   - component: {fileID: 1434867400}
   - component: {fileID: 1434867401}
   - component: {fileID: 1434867402}
+  - component: {fileID: 1434867403}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -3622,6 +3622,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5e9f3f942fc4f60808bc138b9f33b1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1434867403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434867393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31310079e51949fcbe2d40290838d568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1486651918
